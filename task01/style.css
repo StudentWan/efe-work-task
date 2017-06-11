@@ -1,0 +1,148 @@
+.body * {
+  box-sizing: border-box;
+}
+
+.item {
+  border: 1px solid black;
+  background: lightgray;
+}
+
+.main-container {
+  background: floralwhite;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+[class*='sub-container-'] {
+  margin-bottom: 30px;
+}
+
+.sub-container-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-container-1>.row-1 {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.sub-container-1>.row-2 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sub-container-1 .item {
+  width: 100px;
+  height: 100px;
+}
+
+.sub-container-1>.row-1>.item {
+  margin-right: 10px;
+}
+
+.sub-container-1>.row-2>.item {
+  margin-left: 10px;
+}
+
+.sub-container-2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-container-2 .item {
+  height: 100px;
+}
+
+.sub-container-2>[class*='row-'] {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sub-container-2 .item {
+  flex: auto;
+  margin: auto 5px;
+}
+
+.sub-container-2 .item:first-child {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+.sub-container-2 .item:last-child {
+  margin-left: 5px;
+  margin-right: 0;
+}
+
+.sub-container-2>.row-1>.item {
+  margin: 0;
+}
+
+.sub-container-3 {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  flex: auto;
+}
+
+.left-bar {
+  width: 80px;
+  margin-right: 10px;
+}
+
+.main {
+  flex: auto;
+}
+
+.right-bar {
+  margin-left: 10px;
+  width: 80px;
+}
+
+.footer {
+  height: 50px;
+}
+
+.sub-container-4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.img-container {
+  margin-right: 15px;
+}
+
+.img-container>img {
+  width: 100px;
+  height: 100px;
+}
+
+.text-container>p {
+  margin: 0;
+}
+
+.sub-container-5 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.sub-container-5>.item {
+  width: 100px;
+  height: 100px;
+}
