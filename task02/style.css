@@ -1,0 +1,129 @@
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: #ffffff;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  background: black;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  color: #ffffff;
+  min-width: 960px;
+}
+
+.content {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.opt {
+  margin-left: 50px;
+}
+
+.arrow-down {
+  margin-left: 10px;
+}
+
+.banner {
+  width: 100%;
+  height: 260px;
+  min-width: 960px;
+  background: #3c6f78;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.banner-pic {
+  position: absolute;
+  left: 50%;
+}
+
+.banner-text {
+  height: 145px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.half-opacity {
+  font-size: 32px;
+  opacity: .5;
+}
+
+.no-opacity {
+  font-size: 44px;
+}
+
+.half-style {
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    font: 160px 'Songti';
+    font-weight: bolder;
+}
+
+.half-style:before {
+    position:absolute;
+    width: 50%;
+    content: attr(data-content); /* 伪元素的动态获取内容 */
+    overflow:hidden;
+    color: black;
+}
+
+.level-2 {
+  height: 240px;
+  margin-top: 20px;
+  display: flex;
+}
+
+.box {
+  flex: 1 0 0;
+  margin-right: 15px;
+  border: 1px solid #d2d2d2;
+  padding: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.last {
+  margin: 0;
+}
+
+.big-title {
+  font-size: 48px;
+}
+
+.vice-title {
+  font-size: 24px;
+  color: #c2c2c2;
+}
