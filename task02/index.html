@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
   <div class="header">
 
@@ -21,11 +23,11 @@
     </div>
   </div>
   <div class="banner">
-    <img class="banner-pic" src="./static/img/banner.png" alt="">
+    <img class="banner-pic-left" src="./static/img/left.png" alt="">
+    <img class="banner-pic-right" src="./static/img/right.png" alt="">
     <div class="content banner-text">
-      <div class="half-opacity">HELLO<br>WORLD</div>
-      <div class="no-opacity">PRODUCT</div>
-      <div class="half-style" data-content='V'>V</div>
+      <div class="opacity">HELLO<br>WORLD</div>
+      <div class="not-opacity">PRODUCT</div>
     </div>
   </div>
   <div class="content level-2">
@@ -54,5 +56,79 @@
       <div class="text">Some text Some text Some text Some text Some text Some text Some text </div>
     </div>
   </div>
+  <div class="content swipe">
+    <div class="img-container">
+      <img src="./static/img/swipe.png" alt="">
+      <div class="swipe-text">SOME TEXT</div>
+    </div>
+    <div class="swipe-btn-container">
+      <div class="swipe-btn selected"></div>
+      <div class="swipe-btn"></div>
+      <div class="swipe-btn"></div>
+    </div>
+  </div>
+  <div class="content sheet">
+    <div class="sheet-tab">
+      <div class="tab">TABONE</div>
+      <div class="tab chosen">TABTOW</div>
+      <div class="tab">TABTHR</div>
+      <div class="tab">TABFOR</div>
+    </div>
+    <div class="tab-caption">Table Caption</div>
+    <div class="sheet-content">
+      <div class="row first-row">
+        <div class="col"></div>
+        <div class="col">Free Version</div>
+        <div class="col">Personal Version</div>
+        <div class="col">Company Version</div>
+      </div>
+      <div class="row">
+        <div class="col">Feature A</div>
+        <div class="col">Some Text Some Text Some Text</div>
+        <div class="col">Some Text Some Text Some Text</div>
+        <div class="col">Some Text Some Text Some Text</div>
+      </div>
+      <div class="row">
+        <div class="col">Feature B</div>
+        <div class="col">Some Text Some Text Some Text</div>
+        <div class="col">Some Text Some Text Some Text</div>
+        <div class="col">Some Text Some Text Some Text</div>
+      </div>
+      <div class="row">
+        <div class="col">Feature C</div>
+        <div class="col">Some Text Some Text Some Text</div>
+        <div class="col">Some Text Some Text Some Text</div>
+        <div class="col">Some Text Some Text Some Text</div>
+      </div>
+      <div class="row">
+        <div class="col">Feature D</div>
+        <div class="col">Some Text Some Text Some Text</div>
+        <div class="col">Some Text Some Text Some Text</div>
+        <div class="col">Some Text Some Text Some Text</div>
+      </div>
+      <div class="row last">
+        <div class="col">Price</div>
+        <div class="col free">Free</div>
+        <div class="col low-price">$9.9/<span class="per-month">mo</span></div>
+        <div class="col high-price">$99.99/<span class="per-month">mo</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="content contact">
+    <form class="form" action="">
+      <select class="selection" name="" id="" >
+        <option value="">select yout country</option>
+      </select>
+      <select class="selection" name="" id="" >
+        <option value="">select yout country</option>
+      </select>
+      <input class="input" type="text" placeholder="input your email address">
+      <button class="submit">Submit</button>
+    </form>
+  </div>
+  <div class="content footer">
+    ©️ 2017 IFE
+  </div>
 </body>
+
 </html>

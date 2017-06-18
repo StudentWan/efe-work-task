@@ -5,7 +5,8 @@ body {
 
 body {
   background: #ffffff;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 16px;
 }
 
 body * {
@@ -59,7 +60,12 @@ body * {
   color: #ffffff;
 }
 
-.banner-pic {
+.banner-pic-left {
+  position: absolute;
+  right: 50%;
+}
+
+.banner-pic-right {
   position: absolute;
   left: 50%;
 }
@@ -67,35 +73,18 @@ body * {
 .banner-text {
   height: 145px;
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.half-opacity {
+.opacity {
   font-size: 32px;
   opacity: .5;
 }
 
-.no-opacity {
+.not-opacity {
   font-size: 44px;
-}
-
-.half-style {
-    position: absolute;
-    left:50%;
-    top:50%;
-    transform: translate(-50%, -50%);
-    font: 160px 'Songti';
-    font-weight: bolder;
-}
-
-.half-style:before {
-    position:absolute;
-    width: 50%;
-    content: attr(data-content); /* 伪元素的动态获取内容 */
-    overflow:hidden;
-    color: black;
 }
 
 .level-2 {
@@ -127,3 +116,199 @@ body * {
   font-size: 24px;
   color: #c2c2c2;
 }
+
+.swipe {
+  margin-top: 20px;
+}
+
+.img-container {
+  position: relative;
+  color: white;
+}
+
+.swipe-text {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}
+
+.swipe-btn-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.swipe-btn {
+  width: 64px;
+  height: 3px;
+  background: #eeeeee;
+  margin: auto 5px;
+  border-radius: 50px;
+}
+
+.selected {
+  background: #9a9a9a;
+}
+
+.sheet {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-tab {
+  display: flex;
+  font-size: 24px;
+}
+
+.tab {
+  flex: auto;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #d1d1d1;
+}
+
+.chosen {
+  border: 2px solid #d1d1d1;
+  border-bottom: none;
+}
+
+.tab-caption {
+  height: 120px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sheet-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+}
+
+.col {
+  flex: 1 0 0;
+  height: 60px;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  padding-left:  20px;
+  padding-right:  20px;
+}
+
+.col:nth-child(odd) {
+  background: #eeeeee;
+}
+
+.col:nth-child(1) {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.row:nth-child(1) *{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.row:nth-child(6) * {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.free {
+  color: #577a2d;
+}
+
+.low-price {
+  color: #5c92dc;
+}
+
+.high-price {
+  color: #c12e2d;
+}
+
+.per-month {
+  font-size: 9px !important;
+  margin-bottom: 9px;
+}
+
+.contact {
+  margin-top: 10px;
+  height: 220px;
+  background: url('./static/img/form-background-left.png') 0% no-repeat,url('./static/img/form-background-right.png') 100% no-repeat;
+  padding: 40px 80px;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  height: 138px;
+  justify-content: flex-end;
+  align-content: flex-start;
+}
+
+.selection,.input {
+  width: 226px;
+  height: 36px;
+  color: #cdcdcd;
+  margin-bottom: 15px;
+  -webkit-appearance: none;
+  border-radius: 0;
+  border: 1px solid #b0b0b0;
+  padding-left: 15px;
+  outline: none;
+  margin-right:10px;
+}
+
+.selection {
+  background: url('./static/img/form-arrow.png') no-repeat 95% center,#ffffff;
+}
+
+.input {
+  margin-bottom: 0px;
+  
+}
+
+.input::-webkit-input-placeholder{
+  color: #cdcdcd;
+}
+
+.submit {
+  width: 100px;
+  height: 40px;
+  -webkit-appearance: none;
+  border-radius: 10px;
+  border: 1px solid #d2d2d2;
+  background: linear-gradient(to top, #5f95de, #fff);
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.footer {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 14px;
+}
+
+
