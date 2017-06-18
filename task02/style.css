@@ -207,8 +207,8 @@ body * {
   align-items: center;
   text-align: center;
   font-size: 14px;
-  padding-left:  20px;
-  padding-right:  20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .col:nth-child(odd) {
@@ -220,7 +220,7 @@ body * {
   font-weight: bold;
 }
 
-.row:nth-child(1) *{
+.row:nth-child(1) * {
   font-size: 18px;
   font-weight: bold;
 }
@@ -250,7 +250,7 @@ body * {
 .contact {
   margin-top: 10px;
   height: 220px;
-  background: url('./static/img/form-background-left.png') 0% no-repeat,url('./static/img/form-background-right.png') 100% no-repeat;
+  background: url('https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/form-background-left.png') 0% no-repeat, url('https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/form-background-right.png') 100% no-repeat;
   padding: 40px 80px;
 }
 
@@ -263,7 +263,8 @@ body * {
   align-content: flex-start;
 }
 
-.selection,.input {
+.selection,
+.input {
   width: 226px;
   height: 36px;
   color: #cdcdcd;
@@ -273,19 +274,18 @@ body * {
   border: 1px solid #b0b0b0;
   padding-left: 15px;
   outline: none;
-  margin-right:10px;
+  margin-right: 10px;
 }
 
 .selection {
-  background: url('./static/img/form-arrow.png') no-repeat 95% center,#ffffff;
+  background: url('https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/form-arrow.png') no-repeat 95% center, #ffffff;
 }
 
 .input {
   margin-bottom: 0px;
-  
 }
 
-.input::-webkit-input-placeholder{
+.input::-webkit-input-placeholder {
   color: #cdcdcd;
 }
 
@@ -310,5 +310,3 @@ body * {
   align-items: flex-end;
   font-size: 14px;
 }
-
-
