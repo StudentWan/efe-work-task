@@ -1,0 +1,40 @@
+.tags-hobbits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.tags-hobbits *{
+  margin-bottom: 20px;
+}
+
+.tgs span{
+  display: inline-block;
+  padding: auto 5px;
+  margin-right: 10px;
+  overflow: auto;
+  width: 100px;
+  text-align: center;
+  color: #fff;
+  background: #8bc1f0;
+}
+
+.tgs span:hover{
+  background: #e21818;
+}
+
+.tgs span:hover::before {
+  content: "点击删除";
+}
+
+.hbts span {
+  display: inline-block;
+  padding: auto 5px;
+  margin-right: 10px;
+  overflow: auto;
+  width: 100px;
+  text-align: center;
+  color: #fff;
+  background: #ffc98b;
+}

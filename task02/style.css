@@ -51,6 +51,9 @@ body * {
 }
 
 .banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 260px;
   min-width: 960px;
@@ -72,10 +75,8 @@ body * {
 
 .banner-text {
   height: 145px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  z-index: 1;
 }
 
 .opacity {
