@@ -1,0 +1,335 @@
+body {
+  margin: 0;
+  font: 16px 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif #000;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+.hd,
+.banner,
+.ft {
+  width: 100%;
+  min-width: 960px;
+}
+
+.hd {
+  height: 80px;
+  background: #000;
+}
+
+.mn {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-opts {
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.nav-opt {
+  position: relative;
+  margin-left: 40px;
+  padding-right: 30px;
+  padding-left: 10px;
+  z-index: 10;
+  height: 100%;
+  line-height: 80px;
+  white-space: nowrap;
+  color: #fff;
+  background: 95% 50% no-repeat;
+  background-image: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/arrow.png)
+}
+
+.nav-opt:hover {
+  background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/arrow.png) 95% 50% no-repeat,#303030;
+}
+
+.nav-opt:hover > .child-opts {
+  display: block;
+}
+
+
+.child-opts {
+  display: none;
+  position: absolute;
+  padding-left: 50px;
+  padding-right: 5px;
+  top:80px;
+  right: 0;
+  text-align: right;
+  font-size: 20px;
+  color: #fff;
+  background: #303030;
+}
+
+.child-opt {
+  height: 3em;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 260px;
+  background: #2d7079;
+}
+
+[class^='bnr-'] {
+  flex: 1;
+  height: 260px;
+}
+
+.bnr-text {
+  background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/left.png) 100% 50% no-repeat, #2d7079;
+}
+
+.bnr-img {
+  background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/right.png) 0% 50% no-repeat, #2d7079;
+}
+
+.slogan {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 165px;
+  color: #fff;
+}
+
+.slg-mn-hd {
+  font-size: 32px;
+  opacity: .5;
+}
+
+.slg-sub-hd {
+  font-size: 44px;
+}
+
+.articles {
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+  height: 240px;
+}
+
+.atc {
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-right: 15px;
+  padding: 20px;
+  border: 1px solid #e2e2e2;
+}
+
+.atc:last-child {
+  margin-right: 0;
+}
+
+.atc-mn-hd {
+  font-size: 48px;
+}
+
+.atc-sub-hd {
+  font-size: 24px;
+  color: #bfbfbf;
+}
+
+.swipe {
+  margin-top: 20px;
+}
+
+.swp-ct {
+  position: relative;
+}
+
+.swp-ct-txt {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: #fff;
+}
+
+.swp-btns {
+  display: flex;
+  justify-content: center;
+}
+
+.swp-btn {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 60px;
+  height: 2px;
+  border-radius: 15px;
+  background: #eee;
+}
+
+.swp-btns .sel {
+  background: #9a9a9a;
+}
+
+.excel {
+  margin-top: 15px;
+}
+
+.exl-tabs {
+  display: flex;
+  height: 60px;
+}
+
+.exl-tab {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.exl-tabs .sel {
+  border: 1px solid #d1d1d1;
+  border-bottom: none;
+}
+
+.exl-cap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  height: 120px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.exl-ct {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  border-top: 2px solid #ddd;
+}
+
+.col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 58px;
+  font-size: 14px;
+}
+
+.row:last-child .col,
+.row:first-child .col,
+.col:first-child {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.row:last-child {
+  border-bottom: 2px solid #ddd;
+}
+
+.col:first-child,
+.col:nth-child(3) {
+  background: #eee;
+}
+
+.free {
+  color: #577a2d;
+}
+
+.low-price {
+  color: #5c92dc;
+}
+
+.high-price {
+  color: #c12e2d;
+}
+
+.col sup {
+  margin-bottom: 9px;
+}
+
+.blanket {
+  display: flex;
+  position: relative;
+  margin-top: 40px;
+  height: 220px;
+}
+
+.bkt {
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  align-content: flex-start;
+  height: 153px;
+}
+
+.bkt-sel,
+.bkt-ipt {
+  margin-top: 15px;
+  padding-left: 15px;
+  width: 226px;
+  height: 36px;
+  -webkit-appearance: none;
+  border-radius: 0;
+  border: 1px solid #b3b4b6;
+  outline: none;
+  color: #d2d2d2;
+}
+
+.bkt-ipt::-webkit-input-placeholder {
+  color: #d2d2d2;
+}
+
+.bkt-sel {
+  background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/form-arrow.png) 95% 50% no-repeat, #fff;
+}
+
+.bkt-btn {
+  margin-left: 10px;
+  width: 100px;
+  height: 40px;
+  font-size: 14px;
+  border: 1px solid #d1d2d2;
+  border-radius: 5px;
+  color: #fff;
+  background: linear-gradient(to top, #6f9ee0, #fff);
+  outline: none;
+}
+
+.ft {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 80px;
+  font-size: 14px;
+}
