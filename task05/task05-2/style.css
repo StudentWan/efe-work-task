@@ -42,11 +42,34 @@ p {
 }
 
 .nav-opt {
-  margin-left: 50px;
+  position: relative;
+  margin-left: 40px;
   padding-right: 30px;
+  padding-left: 10px;
+  z-index: 10;
+  height: 100%;
+  line-height: 80px;
+  white-space: nowrap;
   color: #fff;
-  background: 100% 50% no-repeat;
+  background: 95% 50% no-repeat;
   background-image: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/arrow.png)
+}
+
+.child-opts {
+  display: none;
+  position: absolute;
+  padding-left: 50px;
+  padding-right: 5px;
+  top:80px;
+  right: 0;
+  text-align: right;
+  font-size: 20px;
+  color: #fff;
+  background: #303030;
+}
+
+.child-opt {
+  height: 3em;
 }
 
 .banner {
