@@ -158,7 +158,35 @@ p {
 
 .swp-ct {
   position: relative;
+  overflow: hidden;
 }
+
+.swp-imgs {
+  margin: 0;
+  padding: 0;
+  left: 0;
+  position: relative;
+  width: 960px;
+  height: 185px;
+  list-style: none;
+}
+
+.swp-img {
+  position: absolute;
+}
+
+.swp-img:nth-child(2) {
+  left: 960px;
+}
+
+.swp-img:nth-child(3) {
+  left: 1920px;
+}
+
+.swp-img:last-child {
+  left: 2880px;
+}
+
 
 .swp-ct-txt {
   position: absolute;

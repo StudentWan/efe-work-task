@@ -150,6 +150,27 @@ p {
   position: relative;
 }
 
+.swp-imgs {
+  margin: 0;
+  padding: 0;
+  left: 0;
+  position: relative;
+  width: 960px;
+  height: 185px;
+  list-style: none;
+}
+
+.swp-imgs .sel {
+  opacity: 1;
+}
+
+.swp-img {
+  position: absolute;
+  transition: opacity .5s ease;
+  opacity: 0;
+}
+
+
 .swp-ct-txt {
   position: absolute;
   bottom: 15px;
