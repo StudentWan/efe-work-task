@@ -1,32 +1,29 @@
 const swipeController = document.getElementById('swp-imgs-id');
-const swipeButton = document.getElementsByClassName('swp-btn');
+const swipeButtons = document.getElementsByClassName('swp-btn');
 
 setInterval(
     () => {
-        let leftStyle = parseInt(window.getComputedStyle(swipeController).left)
-        if (leftStyle === -2880) {
-            swipeController.style.transition = 'none';
-            swipeController.style.left = '0px';
-        } else if (leftStyle === 0) {
+        let beforeMove = parseInt(window.getComputedStyle(swipeController).left);
+        if (beforeMove === 0) {
             swipeController.style.transition = 'left .5s ease';
-            swipeController.style.left = (leftStyle - 960) + 'px';
-            clearButton(swipeButton);
-            swipeButton[1].setAttribute('class', 'swp-btn sel');
-        } else {
-            swipeController.style.left = (leftStyle - 960) + 'px';
-            clearButton(swipeButton);
-            if (leftStyle === -960) {
-                swipeButton[2].setAttribute('class', 'swp-btn sel');
-            } else {
-                swipeButton[0].setAttribute('class', 'swp-btn sel');
-            }
         }
+
+        let afterMove = beforeMove - 960;
+        swipeController.style.left = afterMove + 'px';
+        if (afterMove === -2880) {
+            setTimeout(
+                () => {
+                    swipeController.style.transition = 'none';
+                    swipeController.style.left = '0';
+                },
+                500);
+        }
+
+        let chosenButton = swipeButtons[Math.abs(afterMove) / 960 % 3];
+        let unchosenButton = swipeButtons[(Math.abs(afterMove) - 960) / 960 % 3];
+
+        chosenButton.setAttribute('class', 'swp-btn sel');
+        unchosenButton.setAttribute('class', 'swp-btn');
     },
     2000
 );
-
-function clearButton(buttons) {
-    for (let button of buttons) {
-        button.setAttribute('class', 'swp-btn');
-    }
-}

@@ -17,12 +17,13 @@ const swipeButtons = document.getElementsByClassName('swp-btn');
 setInterval(
     () => {
         for (let i = 0, lens = imgList.length; i < lens; i++) {
-            if(imgList[i].getAttribute('class').indexOf('sel') >= 0) {
+
+            if (imgList[i].getAttribute('class').indexOf('sel') >= 0) {
                 imgList[i].setAttribute('class', 'swp-img');
-                swipeButtons[i].setAttribute('class','swp-btn');
+                swipeButtons[i].setAttribute('class', 'swp-btn');
 
                 imgList[(i + 1) % 3].setAttribute('class', 'swp-img sel');
-                swipeButtons[(i + 1) % 3].setAttribute('class','swp-btn sel');
+                swipeButtons[(i + 1) % 3].setAttribute('class', 'swp-btn sel');
                 break;
             }
         }
