@@ -57,7 +57,7 @@ const countrySelect = document.getElementById('bkt-country');
 const citySelect = document.getElementById('bkt-city');
 const countries = document.getElementById('sel-ctries-id');
 const cities = document.getElementById('sel-cties-id');
-let index = '无';
+let index;
 
 countrySelect.addEventListener('click', (e) => {
     stopPropagation(e);
@@ -77,7 +77,7 @@ countries.addEventListener('click', (e) => {
 
     let cityContent = '';
     for (let city of citiesArray[index]) {
-        cityContent += '<p class="sel-city">' + city + '</p>';
+        cityContent += `<p class="sel-city">${city}</p>`;
     }
     cities.innerHTML = cityContent;
 });
