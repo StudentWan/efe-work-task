@@ -57,20 +57,19 @@ p {
 }
 
 .nav-opt:hover {
-  background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/arrow.png) 99% 50% no-repeat,#303030;
+  background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/arrow.png) 99% 50% no-repeat, #303030;
 }
 
-.nav-opt:hover > .child-opts {
+.nav-opt:hover>.child-opts {
   display: block;
 }
-
 
 .child-opts {
   display: none;
   position: absolute;
   padding-left: 50px;
   padding-right: 10px;
-  top:80px;
+  top: 80px;
   right: 0;
   text-align: right;
   font-size: 20px;
@@ -187,7 +186,6 @@ p {
   left: 2880px;
 }
 
-
 .swp-ct-txt {
   position: absolute;
   bottom: 15px;
@@ -229,6 +227,7 @@ p {
   align-items: center;
   font-size: 24px;
   border-bottom: 1px solid #d1d1d1;
+  cursor: pointer;
 }
 
 .exl-tabs .sel {
@@ -246,8 +245,12 @@ p {
   font-weight: 700;
 }
 
-.exl-ct {
+.exl-cts .sel {
   display: flex;
+}
+
+.exl-ct {
+  display: none;
   flex-flow: row wrap;
   width: 100%;
 }
@@ -321,25 +324,57 @@ p {
   height: 153px;
 }
 
-.bkt-sel,
+[class^='bkt-sel'],
 .bkt-ipt {
   margin-top: 15px;
   padding-left: 15px;
   width: 226px;
   height: 36px;
-  -webkit-appearance: none;
-  border-radius: 0;
   border: 1px solid #b3b4b6;
   outline: none;
+}
+
+.bkt input::-webkit-input-placeholder {
   color: #d2d2d2;
 }
 
-.bkt-ipt::-webkit-input-placeholder {
-  color: #d2d2d2;
-}
-
-.bkt-sel {
+[class^='bkt-sel'] {
+  display: block;
   background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/form-arrow.png) 95% 50% no-repeat, #fff;
+}
+
+.sel-ctries,
+.sel-cties {
+  display: none;
+  position: absolute;
+  left: 0;
+  width: 226px;
+  height: 144px;
+  border: 1px solid #b3b4b6;
+  background: #fff;
+}
+
+.sel-ctries {
+  top: 52px;
+}
+
+.sel-cties {
+  top: 104px;
+}
+
+.sel-ctry,
+.sel-city {
+  padding-left: 10px;
+  width: 226px;
+  height: 36px;
+  line-height: 36px;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.sel-ctry:hover,
+.sel-city:hover {
+  background: #d2d2d2;
 }
 
 .bkt-btn {
