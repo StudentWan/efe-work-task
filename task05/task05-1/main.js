@@ -60,13 +60,7 @@ const cities = document.getElementById('sel-cties-id');
 let index;
 
 countrySelect.addEventListener('click', (e) => {
-    stopPropagation(e);
-    cities.style.display = 'none';
-    if (window.getComputedStyle(countries).display === 'none') {
-        countries.style.display = 'block';
-    } else {
-        countries.style.display = 'none';
-    }
+    toggleDisplay(countries, cities, e);
 });
 
 countries.addEventListener('click', (e) => {
@@ -83,13 +77,7 @@ countries.addEventListener('click', (e) => {
 });
 
 citySelect.addEventListener('click', (e) => {
-    stopPropagation(e);
-    countries.style.display = 'none;'
-    if (window.getComputedStyle(cities).display === 'none') {
-        cities.style.display = 'block';
-    } else {
-        cities.style.display = 'none';
-    }
+    toggleDisplay(cities, countries, e);
 });
 
 cities.addEventListener('click', (e) => {
@@ -108,3 +96,14 @@ function stopPropagation(e) {
     else
         e.cancelBubble = true;
 }
+
+function toggleDisplay(main, follow, event) {
+    stopPropagation(event);
+    follow.style.display = 'none';
+    if (window.getComputedStyle(main).display === 'none') {
+        main.style.display = 'block';
+    } else {
+        main.style.display = 'none';
+    }
+}
+
