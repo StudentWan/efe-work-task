@@ -39,8 +39,11 @@ for (let i = 0; i < excelTabs.length; i++) {
     })
 }
 
+/**
+ * 
+ * @param {*要移除选中的元素集合} elements 
+ */
 function removeSelection(elements) {
-    console.log(elements);
     for (let element of elements) {
         let selectPos = element.className.indexOf('sel') - 1;
         if (selectPos > -2) {
@@ -58,7 +61,7 @@ const countrySelect = document.getElementById('bkt-country');
 const citySelect = document.getElementById('bkt-city');
 const countries = document.getElementById('sel-ctries-id');
 const cities = document.getElementById('sel-cties-id');
-let index;
+let index = '';
 
 countrySelect.addEventListener('click', (e) => {
     toggleDisplay(countries, cities, e);
@@ -86,11 +89,17 @@ cities.addEventListener('click', (e) => {
     citySelect.value = e.target.innerHTML;
 });
 
+// 模拟select行为，使得点击页面其他地方可以关闭选框
 document.addEventListener('click', (e) => {
     countries.style.display = 'none';
     cities.style.display = 'none';
 })
 
+
+/**
+ * 
+ * @param {事件目标，阻止冒泡} e 
+ */
 function stopPropagation(e) {
     if (e.stopPropagation)
         e.stopPropagation();
@@ -98,6 +107,12 @@ function stopPropagation(e) {
         e.cancelBubble = true;
 }
 
+/**
+ * 
+ * @param {主要框} main 
+ * @param {跟随框，在主要框显示之前消失} follow 
+ * @param {事件目标，阻止冒泡} event 
+ */
 function toggleDisplay(main, follow, event) {
     stopPropagation(event);
     follow.style.display = 'none';
@@ -107,4 +122,3 @@ function toggleDisplay(main, follow, event) {
         main.style.display = 'none';
     }
 }
-
