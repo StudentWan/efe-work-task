@@ -40,6 +40,7 @@ for (let i = 0; i < excelTabs.length; i++) {
 }
 
 function removeSelection(elements) {
+    console.log(elements);
     for (let element of elements) {
         let selectPos = element.className.indexOf('sel') - 1;
         if (selectPos > -2) {
