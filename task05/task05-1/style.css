@@ -11,19 +11,19 @@ p {
   margin: 0;
 }
 
-.hd,
+.header,
 .banner,
-.ft {
+.footer {
   width: 100%;
   min-width: 960px;
 }
 
-.hd {
+.header {
   height: 80px;
   background: #000;
 }
 
-.mn {
+.main {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
@@ -89,16 +89,16 @@ p {
   background: #2d7079;
 }
 
-[class^='bnr-'] {
+[class^='banner-'] {
   flex: 1;
   height: 260px;
 }
 
-.bnr-text {
+.banner-text {
   background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/left.png) 100% 50% no-repeat, #2d7079;
 }
 
-.bnr-img {
+.banner-img {
   background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/right.png) 0% 50% no-repeat, #2d7079;
 }
 
@@ -111,12 +111,12 @@ p {
   color: #fff;
 }
 
-.slg-mn-hd {
+.slogan-main {
   font-size: 32px;
   opacity: .5;
 }
 
-.slg-sub-hd {
+.slogan-sub {
   font-size: 44px;
 }
 
@@ -127,7 +127,7 @@ p {
   height: 240px;
 }
 
-.atc {
+.article {
   flex: 1;
   display: flex;
   flex-flow: row wrap;
@@ -138,15 +138,15 @@ p {
   border: 1px solid #e2e2e2;
 }
 
-.atc:last-child {
+.article:last-child {
   margin-right: 0;
 }
 
-.atc-mn-hd {
+.main-head {
   font-size: 48px;
 }
 
-.atc-sub-hd {
+.sub-head {
   font-size: 24px;
   color: #bfbfbf;
 }
@@ -155,12 +155,12 @@ p {
   margin-top: 20px;
 }
 
-.swp-ct {
+.swipe-content {
   position: relative;
   overflow: hidden;
 }
 
-.swp-imgs {
+.swipe-imgs {
   margin: 0;
   padding: 0;
   left: 0;
@@ -170,35 +170,39 @@ p {
   list-style: none;
 }
 
-.swp-img {
+.swipe-img {
   position: absolute;
 }
 
-.swp-img:nth-child(2) {
+.swipe-img:nth-child(2) {
   left: 960px;
 }
 
-.swp-img:nth-child(3) {
+.swipe-img:nth-child(3) {
   left: 1920px;
 }
 
-.swp-img:last-child {
+.swipe-img:last-child {
   left: 2880px;
 }
 
-.swp-ct-txt {
+.swipe-text {
   position: absolute;
   bottom: 15px;
   left: 15px;
   color: #fff;
 }
 
-.swp-btns {
+.swipe-btns {
   display: flex;
   justify-content: center;
 }
 
-.swp-btn {
+.swipe-btns .sel {
+  background: #9a9a9a;
+}
+
+.swipe-btn {
   margin-left: 10px;
   margin-right: 10px;
   width: 60px;
@@ -207,20 +211,21 @@ p {
   background: #eee;
 }
 
-.swp-btns .sel {
-  background: #9a9a9a;
-}
-
 .excel {
   margin-top: 15px;
 }
 
-.exl-tabs {
+.excel-tabs {
   display: flex;
   height: 60px;
 }
 
-.exl-tab {
+.excel-tabs .sel {
+  border: 1px solid #d1d1d1;
+  border-bottom: none;
+}
+
+.excel-tab {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -230,12 +235,7 @@ p {
   cursor: pointer;
 }
 
-.exl-tabs .sel {
-  border: 1px solid #d1d1d1;
-  border-bottom: none;
-}
-
-.exl-cap {
+.excel-caption {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -245,11 +245,11 @@ p {
   font-weight: 700;
 }
 
-.exl-cts .sel {
+.excel-main .sel {
   display: flex;
 }
 
-.exl-ct {
+.excel-content {
   display: none;
   flex-flow: row wrap;
   width: 100%;
@@ -305,14 +305,14 @@ p {
   margin-bottom: 9px;
 }
 
-.blanket {
+.sign-up {
   display: flex;
   position: relative;
   margin-top: 40px;
   height: 220px;
 }
 
-.bkt {
+.blanket {
   position: absolute;
   left: 80px;
   top: 50%;
@@ -324,8 +324,8 @@ p {
   height: 153px;
 }
 
-[class^='bkt-sel'],
-.bkt-ipt {
+[class^='sel-'],
+.input-email {
   margin-top: 15px;
   padding-left: 15px;
   width: 226px;
@@ -334,17 +334,17 @@ p {
   outline: none;
 }
 
-.bkt input::-webkit-input-placeholder {
-  color: #d2d2d2;
-}
-
-[class^='bkt-sel'] {
+[class^='sel-'] {
   display: block;
   background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/form-arrow.png) 95% 50% no-repeat, #fff;
 }
 
-.sel-ctries,
-.sel-cties {
+.blanket input::-webkit-input-placeholder {
+  color: #d2d2d2;
+}
+
+.country-opts,
+.city-opts {
   display: none;
   position: absolute;
   left: 0;
@@ -354,16 +354,16 @@ p {
   background: #fff;
 }
 
-.sel-ctries {
+.country-opts {
   top: 52px;
 }
 
-.sel-cties {
+.city-opts {
   top: 104px;
 }
 
-.sel-ctry,
-.sel-city {
+.country-opt,
+.city-opt {
   padding-left: 10px;
   width: 226px;
   height: 36px;
@@ -372,12 +372,12 @@ p {
   text-align: left;
 }
 
-.sel-ctry:hover,
-.sel-city:hover {
+.country-opt:hover,
+.city-opt:hover {
   background: #d2d2d2;
 }
 
-.bkt-btn {
+.submit-btn {
   margin-left: 10px;
   width: 100px;
   height: 40px;
@@ -389,7 +389,7 @@ p {
   outline: none;
 }
 
-.ft {
+.footer {
   display: flex;
   justify-content: center;
   align-items: flex-end;

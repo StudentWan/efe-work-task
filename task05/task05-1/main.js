@@ -1,11 +1,14 @@
-const swipeController = document.getElementById('swp-imgs-id');
-const swipeButtons = document.getElementsByClassName('swp-btn');
-const excelTabs = document.getElementsByClassName('exl-tab');
-const excelContents = document.getElementsByClassName('exl-ct');
+/**
+ * @file 用来实现任务05-1的需求，包括：图片轮显，表格切换以及select模拟
+ * @author benyuwan(benyuwan@gmail.com)
+ */
+
+const swipeController = document.getElementById('swipe-imgs-id');
+const swipeButtons = document.getElementsByClassName('swipe-btn');
 
 setInterval(
     () => {
-        let beforeMove = parseInt(window.getComputedStyle(swipeController).left);
+        let beforeMove = parseInt(window.getComputedStyle(swipeController).left,10);
         if (beforeMove === 0) {
             swipeController.style.transition = 'left .5s ease';
         }
@@ -24,18 +27,21 @@ setInterval(
         let chosenButton = swipeButtons[Math.abs(afterMove) / 960 % 3];
         let unchosenButton = swipeButtons[(Math.abs(afterMove) - 960) / 960 % 3];
 
-        chosenButton.setAttribute('class', 'swp-btn sel');
-        unchosenButton.setAttribute('class', 'swp-btn');
+        chosenButton.setAttribute('class', 'swipe-btn sel');
+        unchosenButton.setAttribute('class', 'swipe-btn');
     },
     2000
 );
 
-for (let i = 0; i < excelTabs.length; i++) {
+const excelTabs = document.getElementsByClassName('excel-tab');
+const excelContents = document.getElementsByClassName('excel-content');
+
+for (let i = 0, lens = excelTabs.length; i < lens; i++) {
     excelTabs[i].addEventListener('click', (e) => {
         removeSelection(excelTabs);
         removeSelection(excelContents);
-        excelTabs[i].setAttribute('class', 'exl-tab sel');
-        excelContents[i].setAttribute('class', 'exl-ct sel');
+        excelTabs[i].setAttribute('class', 'excel-tab sel');
+        excelContents[i].setAttribute('class', 'excel-content sel');
     })
 }
 
@@ -57,10 +63,10 @@ citiesArray['中国'] = ['北京', '上海', '广州'];
 citiesArray['美国'] = ['洛杉矶', '纽约', '旧金山'];
 citiesArray['英国'] = ['伦敦', '利物浦', '曼彻斯特'];
 
-const countrySelect = document.getElementById('bkt-country');
-const citySelect = document.getElementById('bkt-city');
-const countries = document.getElementById('sel-ctries-id');
-const cities = document.getElementById('sel-cties-id');
+const countrySelect = document.getElementById('sel-country-id');
+const citySelect = document.getElementById('sel-city-id');
+const countries = document.getElementById('country-opts-id');
+const cities = document.getElementById('city-opts-id');
 let index = '';
 
 countrySelect.addEventListener('click', (e) => {
@@ -75,7 +81,7 @@ countries.addEventListener('click', (e) => {
 
     let cityContent = '';
     for (let city of citiesArray[index]) {
-        cityContent += `<p class="sel-city">${city}</p>`;
+        cityContent += `<p class="city-opt">${city}</p>`;
     }
     cities.innerHTML = cityContent;
 });
@@ -95,10 +101,9 @@ document.addEventListener('click', (e) => {
     cities.style.display = 'none';
 })
 
-
 /**
  * 
- * @param {事件目标，阻止冒泡} e 
+ * @param {事件，阻止冒泡} e 
  */
 function stopPropagation(e) {
     if (e.stopPropagation)
@@ -111,7 +116,7 @@ function stopPropagation(e) {
  * 
  * @param {主要框} main 
  * @param {跟随框，在主要框显示之前消失} follow 
- * @param {事件目标，阻止冒泡} event 
+ * @param {事件，阻止冒泡} event 
  */
 function toggleDisplay(main, follow, event) {
     stopPropagation(event);
