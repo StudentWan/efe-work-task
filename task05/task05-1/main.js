@@ -1,4 +1,5 @@
 /**
+ * 
  * @file 用来实现任务05-1的需求，包括：图片轮显，表格切换以及select模拟
  * @author benyuwan(benyuwan@gmail.com)
  */
@@ -62,7 +63,6 @@ let citiesArray = [];
 citiesArray['中国'] = ['北京', '上海', '广州'];
 citiesArray['美国'] = ['洛杉矶', '纽约', '旧金山'];
 citiesArray['英国'] = ['伦敦', '利物浦', '曼彻斯特'];
-
 const countrySelect = document.getElementById('sel-country-id');
 const citySelect = document.getElementById('sel-city-id');
 const countries = document.getElementById('country-opts-id');
