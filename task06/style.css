@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  font: 16px 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif #000;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+.header,
+.banner{
+  width: 100%;
+  min-width: 960px;
+}
+
+.header {
+  height: 80px;
+  background: #000;
+}
+
+.main {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-opts {
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.nav-opt {
+  position: relative;
+  margin-left: 40px;
+  padding-right: 30px;
+  padding-left: 10px;
+  z-index: 10;
+  height: 100%;
+  line-height: 80px;
+  white-space: nowrap;
+  color: #fff;
+  background: 99% 50% no-repeat;
+  background-image: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/arrow.png)
+}
+
+.nav-opt:hover {
+  background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/arrow.png) 99% 50% no-repeat, #303030;
+}
+
+.nav-opt:hover>.child-opts {
+  display: block;
+}
+
+.child-opts {
+  display: none;
+  position: absolute;
+  padding-left: 50px;
+  padding-right: 10px;
+  top: 80px;
+  right: 0;
+  text-align: right;
+  font-size: 20px;
+  color: #fff;
+  background: #303030;
+}
+
+.child-opt {
+  height: 3em;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 260px;
+  background: #2d7079;
+}
+
+[class^='banner-'] {
+  flex: 1;
+  height: 260px;
+}
+
+.banner-text {
+  background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/left.png) 100% 50% no-repeat, #2d7079;
+}
+
+.banner-img {
+  background: url(https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/right.png) 0% 50% no-repeat, #2d7079;
+}
+
+.slogan {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 165px;
+  color: #fff;
+}
+
+.slogan-main {
+  font-size: 32px;
+  opacity: .5;
+}
+
+.slogan-sub {
+  font-size: 44px;
+}

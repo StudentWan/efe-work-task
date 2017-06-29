@@ -9,7 +9,7 @@
 
 按照如下设计图及需求完成编码
 
-<img src="./design/pic-1.png" alt="图1"></img>
+<img src="./resource/pic-1.png" alt="图1"></img>
 
 图1
 
@@ -25,7 +25,7 @@
 
 5. 右侧表格高度超过屏幕高度，滚动的时候，整页进行滚动。
 
-<img src="./design/pic-1.png" alt="图1"></img>
+<img src="./resource/pic-1.png" alt="图1"></img>
 
 图2
 
