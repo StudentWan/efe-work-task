@@ -7,9 +7,9 @@
 const swipeController = document.getElementById('swipe-imgs-id');
 const swipeButtons = document.getElementsByClassName('swipe-btn');
 
-setInterval(
+let swipeInterval = setInterval(
     () => {
-        let beforeMove = parseInt(window.getComputedStyle(swipeController).left,10);
+        let beforeMove = parseInt(window.getComputedStyle(swipeController).left, 10);
         if (beforeMove === 0) {
             swipeController.style.transition = 'left .5s ease';
         }
@@ -34,16 +34,21 @@ setInterval(
     2000
 );
 
-const excelTabs = document.getElementsByClassName('excel-tab');
-const excelContents = document.getElementsByClassName('excel-content');
+const excelTab = document.getElementById('excel-tabs-id');
+const excelMain = document.getElementById('excel-main-id');
 
-for (let i = 0, lens = excelTabs.length; i < lens; i++) {
-    excelTabs[i].addEventListener('click', (e) => {
-        removeSelection(excelTabs);
-        removeSelection(excelContents);
-        excelTabs[i].setAttribute('class', 'excel-tab sel');
-        excelContents[i].setAttribute('class', 'excel-content sel');
-    })
+excelTab.addEventListener('click', clickExcel)
+
+/**
+ * 
+ * @param {点击表格Tab的事件对象} e 
+ */
+function clickExcel(e) {
+    let sequence = e.target.dataset.seq;
+    removeSelection(excelTab.children);
+    removeSelection(excelMain.children);
+    e.target.setAttribute('class', 'excel-tab sel');
+    excelMain.children[sequence].setAttribute('class', 'excel-content sel');
 }
 
 /**
@@ -63,43 +68,46 @@ let citiesArray = [];
 citiesArray['中国'] = ['北京', '上海', '广州'];
 citiesArray['美国'] = ['洛杉矶', '纽约', '旧金山'];
 citiesArray['英国'] = ['伦敦', '利物浦', '曼彻斯特'];
-const countrySelect = document.getElementById('sel-country-id');
-const citySelect = document.getElementById('sel-city-id');
-const countries = document.getElementById('country-opts-id');
-const cities = document.getElementById('city-opts-id');
+const blanket = document.getElementById('blanket-id');
+const country = document.getElementById('sel-country-id');
+const city = document.getElementById('sel-city-id');
+const countrySelect = document.getElementById('country-opts-id');
+const citySelect = document.getElementById('city-opts-id');
 let index = '';
 
-countrySelect.addEventListener('click', (e) => {
-    toggleDisplay(countries, cities, e);
-});
+blanket.addEventListener('click', clickBlanket);
 
-countries.addEventListener('click', (e) => {
-    countries.style.display = 'none';
-    countrySelect.value = e.target.innerHTML;
-    index = e.target.innerHTML;
-    citySelect.value = citiesArray[index][0];
-
-    let cityContent = '';
-    for (let city of citiesArray[index]) {
-        cityContent += `<p class="city-opt">${city}</p>`;
+/**
+ * 
+ * @param {点击事件对象} e 
+ */
+function clickBlanket(e) {
+    switch (e.target.className) {
+        case 'sel-country':
+            toggleDisplay(countrySelect, citySelect, e);
+            break;
+        case 'sel-city':
+            toggleDisplay(citySelect, countrySelect, e);
+            break;
+        case 'country-opt':
+            countrySelect.style.display = 'none';
+            country.value = e.target.innerHTML;
+            index = e.target.innerHTML;
+            city.value = citiesArray[index][0];
+            let cityOptions = '';
+            for (let option of citiesArray[index]) {
+                cityOptions += `<p class="city-opt">${option}</p>`;
+            }
+            citySelect.innerHTML = cityOptions;
+            break;
+        case 'city-opt':
+            citySelect.style.display = 'none';
+            city.value = e.target.innerHTML;
+            break;
+        default:
+            break;
     }
-    cities.innerHTML = cityContent;
-});
-
-citySelect.addEventListener('click', (e) => {
-    toggleDisplay(cities, countries, e);
-});
-
-cities.addEventListener('click', (e) => {
-    cities.style.display = 'none';
-    citySelect.value = e.target.innerHTML;
-});
-
-// 模拟select行为，使得点击页面其他地方可以关闭选框
-document.addEventListener('click', (e) => {
-    countries.style.display = 'none';
-    cities.style.display = 'none';
-})
+}
 
 /**
  * 
@@ -127,3 +135,24 @@ function toggleDisplay(main, follow, event) {
         main.style.display = 'none';
     }
 }
+
+// 模拟select行为，使得点击页面其他地方可以关闭选框
+document.addEventListener('click', closeSelect);
+
+/**
+ * 
+ * @param {点击页面其他地方以关闭选项的事件对象} e 
+ */
+function closeSelect(e) {
+    countrySelect.style.display = 'none';
+    citySelect.style.display = 'none';
+}
+
+// 卸载页面时移除事件处理程序并清除interval
+document.addEventListener('unload', () => {
+    excelTab.removeEventListener('click', clickExcel);
+    blanket.removeEventListener('click', clickBlanket);
+    document.removeEventListener('click', closeSelect);
+    clearInterval(swipeInterval);
+})
+

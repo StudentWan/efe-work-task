@@ -107,16 +107,16 @@
       </div>
     </div>
     <div class="excel">
-      <div class="excel-tabs">
-        <div class="excel-tab sel">TABONE</div>
-        <div class="excel-tab">TABTOW</div>
-        <div class="excel-tab">TABTHR</div>
-        <div class="excel-tab">TABFOR</div>
+      <div class="excel-tabs" id="excel-tabs-id">
+        <div class="excel-tab sel" data-seq="0">TABONE</div>
+        <div class="excel-tab" data-seq="1">TABTOW</div>
+        <div class="excel-tab" data-seq="2">TABTHR</div>
+        <div class="excel-tab" data-seq="3">TABFOR</div>
       </div>
       <div class="excel-caption">
         <p>Table Caption</p>
       </div>
-      <div class="excel-main">
+      <div class="excel-main" id="excel-main-id">
         <div class="excel-content sel">
           <div class="row">
             <div class="col"></div>
@@ -276,7 +276,7 @@
       <img src="https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/form-background-right.png"
         alt="right background pic">
 
-      <form action="" class="blanket">
+      <form action="" class="blanket" id="blanket-id">
 
         <input class='sel-country' name="" id="sel-country-id" placeholder="select your country" readonly></input>
         <div class="country-opts" id="country-opts-id">
