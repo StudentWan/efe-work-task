@@ -118,3 +118,51 @@ p {
 .slogan-sub {
   font-size: 44px;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.sidebar {
+    padding: 20px;
+    width: 30%;
+    height: calc(100vh - 360px);
+    max-height: fit-content;
+    overflow: auto;
+    border: 1px solid #ebebeb;
+    background: #efefef;
+}
+
+.sidebar-item {
+  margin: 10px auto;
+}
+
+.sidebar-item:first-child {
+  margin-top: 0;
+}
+
+.sidebar-item:last-child {
+  margin-bottom: 0;
+}
+
+.main-table {
+  width: 68%;
+  text-align: center;
+  border: 1px solid #ebebeb;
+  border-collapse: collapse;
+}
+
+.main-table tr{
+  line-height: 50px;
+}
+
+tr:nth-of-type(odd) {
+  background: #efefef;
+}
+
+
+
+
