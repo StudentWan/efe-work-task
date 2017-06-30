@@ -12,7 +12,7 @@ p {
 }
 
 .header,
-.banner{
+.banner {
   width: 100%;
   min-width: 960px;
 }
@@ -127,13 +127,11 @@ p {
 }
 
 .sidebar {
-    padding: 20px;
-    width: 30%;
-    height: calc(100vh - 360px);
-    max-height: fit-content;
-    overflow: auto;
-    border: 1px solid #ebebeb;
-    background: #efefef;
+  padding: 20px;
+  width: 30%;
+  overflow: auto;
+  border: 1px solid #ebebeb;
+  background: #efefef;
 }
 
 .sidebar-item {
@@ -148,21 +146,30 @@ p {
   margin-bottom: 0;
 }
 
-.main-table {
+.main-table,
+.head-table {
   width: 68%;
   text-align: center;
   border: 1px solid #ebebeb;
   border-collapse: collapse;
 }
 
-.main-table tr{
+.main-table tr,
+.head-table tr {
   line-height: 50px;
 }
+
+.head-table {
+  position: fixed;
+  top: 0;
+  display: none;
+}
+
+.fit-width {
+  visibility: hidden;
+}
+
 
 tr:nth-of-type(odd) {
   background: #efefef;
 }
-
-
-
-
