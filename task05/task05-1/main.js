@@ -28,8 +28,8 @@ let swipeInterval = setInterval(
         let chosenButton = swipeButtons[Math.abs(afterMove) / 960 % 3];
         let unchosenButton = swipeButtons[(Math.abs(afterMove) - 960) / 960 % 3];
 
-        chosenButton.setAttribute('class', 'swipe-btn sel');
-        unchosenButton.setAttribute('class', 'swipe-btn');
+        chosenButton.classList.add('sel');
+        unchosenButton.classList.remove('sel');
     },
     2000
 );
@@ -47,8 +47,8 @@ function clickExcel(e) {
     let sequence = e.target.dataset.seq;
     removeSelection(excelTab.children);
     removeSelection(excelMain.children);
-    e.target.setAttribute('class', 'excel-tab sel');
-    excelMain.children[sequence].setAttribute('class', 'excel-content sel');
+    e.target.classList.add('sel');
+    excelMain.children[sequence].classList.add('sel');
 }
 
 /**
@@ -57,9 +57,8 @@ function clickExcel(e) {
  */
 function removeSelection(elements) {
     for (let element of elements) {
-        let selectPos = element.className.indexOf('sel') - 1;
-        if (selectPos > -2) {
-            element.setAttribute('class', element.className.substr(0, selectPos));
+        if (element.classList.contains('sel')) {
+            element.classList.remove('sel');
         }
     }
 }
