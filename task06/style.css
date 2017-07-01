@@ -154,8 +154,8 @@ p {
   border-collapse: collapse;
 }
 
-.main-table tr,
-.head-table tr {
+.main-table,
+.head-table{
   line-height: 50px;
 }
 
