@@ -149,14 +149,10 @@ p {
 .main-table,
 .head-table {
   width: 68%;
+  line-height: 50px;
   text-align: center;
   border: 1px solid #ebebeb;
   border-collapse: collapse;
-}
-
-.main-table,
-.head-table{
-  line-height: 50px;
 }
 
 .head-table {

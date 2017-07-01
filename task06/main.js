@@ -4,10 +4,8 @@
  */
 const sidebar = document.getElementById('left-sidebar');
 
-// 设置最大高度/初始高度，并记录初始高度
-const sideHeight = (window.innerHeight - sidebar.getBoundingClientRect().top);
+// 设置左侧栏最大高度
 sidebar.style.maxHeight = (sidebar.scrollHeight + 2) + 'px'; // 2px边框
-sidebar.style.height = sideHeight + 'px';
 
 document.addEventListener('scroll', scrollPage);
 
@@ -16,10 +14,9 @@ document.addEventListener('scroll', scrollPage);
  * @param {document的scroll事件对象} e 
  */
 function scrollPage(e) {
-    // 实时更改左侧栏高度
-    let scrollTop = parseInt(this.body.scrollTop, 10);
-    let totalHeight = sideHeight + scrollTop;
-    sidebar.style.height = totalHeight + 'px';
+    // 实时设置左侧栏高度
+    let sideHeight = window.innerHeight - sidebar.getBoundingClientRect().top;
+    sidebar.style.height = sideHeight + 'px';
 
     // 悬浮表头实现
     const table = document.getElementById('main-table');
