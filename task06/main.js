@@ -15,8 +15,7 @@ document.addEventListener('scroll', scrollPage);
  */
 function scrollPage(e) {
     // 实时设置左侧栏高度
-    let sideHeight = window.innerHeight - sidebar.getBoundingClientRect().top;
-    sidebar.style.height = sideHeight + 'px';
+    sidebar.style.height = (window.innerHeight - sidebar.getBoundingClientRect().top) + 'px';
 
     // 悬浮表头实现
     const table = document.getElementById('main-table');
