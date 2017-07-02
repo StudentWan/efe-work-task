@@ -30,6 +30,17 @@ function scrollPage(e) {
     }
 }
 
+window.addEventListener('resize', resizeWindow);
+
+/**
+ * 
+ * @param {window的resize事件对象} e 
+ */
+function resizeWindow(e) {
+    // 实时设置左侧栏高度
+    sidebar.style.height = (window.innerHeight - sidebar.getBoundingClientRect().top) + 'px';
+}
+
 sidebar.addEventListener('scroll', scrollSide);
 
 /**
