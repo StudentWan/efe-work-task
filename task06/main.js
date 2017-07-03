@@ -40,14 +40,3 @@ function resizeWindow(e) {
     // 实时设置左侧栏高度
     sidebar.style.height = (window.innerHeight - sidebar.getBoundingClientRect().top) + 'px';
 }
-
-sidebar.addEventListener('scroll', scrollSide);
-
-/**
- * 
- * @param {sidebar的scroll事件对象} e 
- */
-function scrollSide(e) {
-    // 防止冒泡被document侦听
-    e.stopPropagation();
-}
