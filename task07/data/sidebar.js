@@ -22,11 +22,5 @@ const level2Data = {
     '20': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text'],
     '21': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text'],
     '22': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text'],
-    '23': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text'],
-    '24': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text'],
-    '25': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text'],
-    '26': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text'],
-    '27': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text'],
-    '28': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text'],
-    '29': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text']
+    '23': ['Level 2 Some Text', 'Level 2 Some Text', 'Level 2 Some Text']
 }

@@ -6,16 +6,18 @@
 const table = document.getElementById('main-table');
 const head = document.getElementById('head-table');
 
-const tableLine = table.children[0].children;
-// 根据数据文件table.js设置表格内容
-for (let i = 0, lens = tableLine.length; i < lens - 1; i++) {
-    let item = tableLine[i + 1].children;
-    item[0].innerHTML = content[i].name;
-    item[1].innerHTML = content[i].content;
-    item[2].innerHTML = content[i].value;
+let tableContent = table.children[0].innerHTML;
+
+// 根据数据文件table.js动态生成表格
+for (let i = 0, lens = Object.keys(content).length; i < lens; i++) {
+    let eachLine = '<tr><td>' + content[i].name + 
+                   '</td><td>' + content[i].content + 
+                   '</td><td>' + content[i].value + 
+                   '</td><td><button class="edit">Edit</button> <button class="delete">Delete</button></td></tr>';
+    tableContent += eachLine;
 }
-// 设置内容后再适配宽度
-fitWidth(table, head);
+table.children[0].innerHTML = tableContent;
+fitWidth(table, head); // 动态生成后再适配宽度
 
 const sidebar = document.getElementById('left-sidebar');
 // 设置左侧栏最大高度
