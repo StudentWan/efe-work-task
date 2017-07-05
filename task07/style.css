@@ -127,7 +127,7 @@ p {
 }
 
 .sidebar {
-  padding: 20px;
+  padding-bottom: 20px;
   width: 30%;
   overflow: auto;
   border: 1px solid #ebebeb;
@@ -135,15 +135,18 @@ p {
 }
 
 .sidebar-item {
-  margin: 10px auto;
+  line-height: 30px;
+  padding-left: 20px;
 }
 
 .sidebar-item:first-child {
-  margin-top: 0;
+  padding-top: 20px;
 }
 
-.sidebar-item:last-child {
-  margin-bottom: 0;
+.sub-item {
+  line-height: 30px;
+  text-align: center;
+  background: #fff;
 }
 
 .main-table,
@@ -160,11 +163,6 @@ p {
   top: 0;
   display: none;
 }
-
-.fit-width {
-  visibility: hidden;
-}
-
 
 tr:nth-of-type(odd) {
   background: #efefef;
