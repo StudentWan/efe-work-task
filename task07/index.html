@@ -84,21 +84,40 @@
         </div>
         <table class="head-table" border="1" id="head-table">
             <tr>
-                <th id="head-1">TableHead</th>
-                <th id="head-2">TableHead</th>
-                <th id="head-3">Head</th>
-                <th id="head-4">TableHead</th>
+                <th id="head-1">Name</th>
+                <th id="head-2">Content</th>
+                <th id="head-3">Value</th>
+                <th id="head-4">Handle</th>
             </tr>
         </table>
         <table class="main-table" border="1" id="main-table">
             <tr>
-                <th id="main-1">TableHead</th>
-                <th id="main-2">TableHead</th>
-                <th id="main-3">Head</th>
-                <th id="main-4">TableHead</th>
+                <th id="main-1">Name</th>
+                <th id="main-2">Content</th>
+                <th id="main-3">Value</th>
+                <th id="main-4">Handle</th>
             </tr>
         </table>
     </div>
+    <div class="edit-dialog" id="edit-dialog">
+        <form action="" class="edit-form">
+            <label>Name<input type="text" id="edit-name"></label>
+            <label>Content<input type="text" id="edit-content"></label>
+            <label>Value<input type="text" id="edit-value"></label>
+            <div class="edit-btn">
+                <button class="confirm-edit" type="submit">确定</button>
+                <button class="cancel" type="submit">取消</button>
+            </div>
+        </form>
+    </div>
+    <div class="delete-dialog" id="delete-dialog">
+        <p>你确定要删除这一行吗？</p>
+        <div class="delete-btn">
+            <button class="confirm-delete" type="submit">确定</button>
+            <button class="cancel" type="submit">取消</button>
+        </div>
+    </div>
+    <div class="layer" id="layer"></div>
     <script src="./data/table.js"></script>
     <script src="./data/sidebar.js"></script>
     <script src="./main.js"></script>
