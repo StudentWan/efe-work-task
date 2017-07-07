@@ -141,6 +141,7 @@ function controllTable(e) {
         case 'confirm-delete':
             deleteRow.outerHTML = '';
             toggleDialog(deleteDialog);
+            fitWidth(table, head);
             break;
         case 'cancel':
             e.preventDefault();
