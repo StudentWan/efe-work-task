@@ -1,4 +1,3 @@
-
 /**
  * @file 用来实现任务07的需求，包括：左边栏二级项目展示、浮出层、表格项目控制等
  * @author benyuwan(benyuwan@gmail.com)
@@ -8,27 +7,53 @@ const table = document.getElementById('main-table');
 const head = document.getElementById('head-table');
 let tableContent = table.children[0].innerHTML;
 // 根据数据文件table.js动态生成表格
-for (let i = 0, lens = Object.keys(content).length; i < lens; i++) { 
-    let eachLine = '<tr><td>' + content[i].name +
-        '</td><td>' + content[i].content +
-        '</td><td>' + content[i].value +
-        '</td><td><button class="edit">Edit</button> ' +
-        '<button class="delete">Delete</button></td></tr>';
+for (let i = 0, lens = Object.keys(content).length; i < lens; i++) {
+    let eachLine = ''
+                   +    '<tr>' 
+                   +        '<td>' 
+                   +            content[i].name 
+                   +        '</td>' 
+                   +        '<td>' 
+                   +            content[i].content 
+                   +        '</td>' 
+                   +        '<td>' 
+                   +            content[i].value 
+                   +        '</td>' 
+                   +        '<td>' 
+                   +            '<button class="edit">Edit</button> ' 
+                   +            '<button class="delete">Delete</button>' 
+                   +        '</td>' 
+                   +    '</tr>';
     tableContent += eachLine;
 }
 table.children[0].innerHTML = tableContent;
-// 动态生成后再适配宽度
-fitWidth(); 
+// 动态生成后再适配悬浮表头宽度
+fitWidth();
 
-const sidebar = document.getElementById('left-sidebar');
+const barList = document.getElementById('bar-list');
+let listHTML = '';
+// 根据数据文件动态生成左侧二级导航
+for (let i = 0, lens = Object.keys(sidebarData).length; i < lens; i++) {
+    listHTML += ''
+                + '<li class="sidebar-item">' 
+                +       '<p class="bar-title">' 
+                +           sidebarData[i].name 
+                +       '</p>' 
+                +       '<ul class="sub-item">';
+    let subData = sidebarData[i]['sub-item'];
+    for (let data of subData) {
+        listHTML +=         '<li>' 
+                +               data.name 
+                +           '</li>';
+    }
+    listHTML +=         '</ul>' 
+                + '</li>';
+}
+barList.innerHTML = listHTML;
 // 使用scrollHeight获取高度之前应该将高度设为auto
-sidebar.style.height = 'auto'; 
-// 2px边框
+const sidebar = document.getElementById('left-sidebar');
+sidebar.style.height = 'auto';
 sidebar.style.maxHeight = (sidebar.scrollHeight + 2) + 'px';
-
-document.addEventListener('scroll', scrollPage);
-
-window.addEventListener('resize', resizeWindow);
 
 const editDialog = document.getElementById('edit-dialog');
 const deleteDialog = document.getElementById('delete-dialog');
@@ -38,6 +63,8 @@ const editContent = document.getElementById('edit-content');
 const editValue = document.getElementById('edit-value');
 let editRow;
 let deleteRow;
+document.addEventListener('scroll', scrollPage);
+window.addEventListener('resize', resizeWindow);
 document.addEventListener('click', controllSidebarAndTable);
 
 /**
@@ -78,29 +105,12 @@ function resizeWindow(e) {
  */
 function controllSidebarAndTable(e) {
     switch (e.target.className) {
-        case 'sidebar-item':
-            let level1Elements = sidebar.getElementsByClassName('sidebar-item');
-            if (!e.target.nextElementSibling || e.target.nextElementSibling.className === 'sidebar-item') {
-                for (let i = 0, lens = level1Elements.length; i < lens; i++) {
-                    if (e.target === level1Elements[i]) {
-                        let level2String = '';
-                        for (let data of level2Data[i]) {
-                            level2String += '<p class="sub-item">' + data + '</p>'
-                        }
-                        e.target.outerHTML += level2String;
-                    }
-                }
+        case 'bar-title':
+            let subItem = e.target.nextElementSibling;
+            if (window.getComputedStyle(subItem).display === 'none') {
+                subItem.style.display = 'block';
             } else {
-                let level2Element = e.target.nextElementSibling;
-                do {
-                    if (!level2Element.nextElementSibling) {
-                        level2Element.outerHTML = '';
-                        break;
-                    }
-                    let temp = level2Element.nextElementSibling;
-                    level2Element.outerHTML = '';
-                    level2Element = temp;
-                } while (level2Element.className !== 'sidebar-item')
+                subItem.style.display = 'none';
             }
             sidebar.style.height = 'auto';
             sidebar.style.maxHeight = (sidebar.scrollHeight + 2) + 'px';

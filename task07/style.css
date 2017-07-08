@@ -127,24 +127,27 @@ p {
 }
 
 .sidebar {
-  padding-bottom: 20px;
   width: 30%;
   overflow: auto;
   border: 1px solid #ebebeb;
   background: #efefef;
 }
 
+ul {
+  padding: 0;
+  list-style: none;
+}
+
 .sidebar-item {
   line-height: 30px;
+}
+
+.bar-title {
   padding-left: 20px;
 }
 
-.sidebar-item:first-child {
-  padding-top: 20px;
-}
-
 .sub-item {
-  line-height: 30px;
+  display: none;
   text-align: center;
   background: #fff;
 }
