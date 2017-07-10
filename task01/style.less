@@ -1,0 +1,150 @@
+@background-color: #fffaf0;
+@item-color: #d3d3d3;
+@border-color: #000;
+.column-flex {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.bordered {
+    border: 1px solid @border-color;
+}
+
+.body * {
+    box-sizing: border-box;
+}
+
+.item {
+    background: @item-color;
+    .bordered;
+}
+
+[class^='container-'] {
+    .column-flex;
+    padding: 10px;
+    margin-bottom: 30px;
+    min-width: 200px;
+    background: @background-color;
+    .bordered;
+}
+
+.sub-container {
+    .column-flex;
+    margin-bottom: 30px;
+}
+
+.last {
+    margin-bottom: 0 !important;
+}
+
+.line {
+    display: flex;
+    margin-bottom: 10px;
+    .item {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.left {
+    justify-content: flex-start;
+    .item {
+        margin-right: 10px;
+    }
+}
+
+.right {
+    justify-content: flex-end;
+    .item {
+        margin-left: 10px;
+    }
+}
+
+.grid {
+    display: flex;
+    margin-bottom: 10px;
+    .item {
+        flex: auto;
+        margin: auto 5px;
+        height: 100px;
+        &:first-child {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+        &:last-child {
+            margin-left: 5px;
+            margin-right: 0;
+        }
+    }
+}
+
+.one-grid {
+    .item {
+        margin: auto 0 !important;
+    }
+}
+
+.holygrid {
+    .column-flex;
+    width: 100%;
+    min-height: 300px;
+    .header {
+        height: 50px;
+        margin-bottom: 10px;
+    }
+    .content {
+        display: flex;
+        flex: auto;
+        margin-bottom: 10px;
+        .left-bar {
+            margin-right: 10px;
+            width: 80px;
+        }
+        .main {
+            flex: auto;
+        }
+        .right-bar {
+            margin-left: 10px;
+            width: 80px;
+        }
+    }
+    .footer {
+        height: 50px;
+    }
+}
+
+.article {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.image {
+    margin-right: 15px;
+    img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.text {
+    p {
+        margin: 0;
+    }
+}
+
+.split {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    .item {
+        width: 100px;
+        height: 100px;
+        margin-right: 10px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
