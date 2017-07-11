@@ -1,0 +1,299 @@
+$white: #fff;
+$darkerwhite: $white - #111;
+$border: 1px solid #d2d2d2;
+$smallest: 9px;
+$smaller: 14px;
+$small: 18px;
+$big: 24px;
+$bigger: 32px;
+$biggest: 44px;
+@mixin flex( $flow: wrap row, $justify: center, $align: center) {
+    display: flex;
+    flex-flow: $flow;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin gap($distance: 20px) {
+    margin-top: $distance;
+}
+
+// 虽然在这次任务中没有重用，但我们认为它是可重用的
+@mixin tab {
+    .tab {
+        flex: auto;
+        @include flex;
+        height: 60px;
+        border-bottom: $border;
+    }
+    .selected {
+        border: $border;
+        border-bottom: none;
+    }
+}
+
+@mixin form-head {
+    font: {
+        size: $small;
+        weight: 700;
+    }
+}
+
+body {
+    margin: 0;
+    background: $white;
+    font: {
+        family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        size: 16px;
+    }
+    * {
+        box-sizing: border-box;
+    }
+}
+
+.content {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    height: 80px;
+    min-width: 960px;
+    background: #000;
+}
+
+.nav {
+    @include flex($justify: space-between);
+    height: 100%;
+}
+
+.list {
+    @include flex($justify: flex-end);
+    color: $white;
+    .opt {
+        @include flex;
+        margin-right: 20px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.banner {
+    @include flex;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 260px;
+    min-width: 960px;
+    color: $white;
+    background: #3c6f78;
+    [class^='banner-pic-'] {
+        position: absolute;
+    }
+    .banner-pic-left {
+        right: 50%;
+    }
+    .banner-pic-right {
+        left: 50%;
+    }
+}
+
+.banner-text {
+    position: relative;
+    z-index: 1;
+    height: 145px;
+    .main-title {
+        font-size: $biggest;
+    }
+    .vice-title {
+        font-size: $bigger;
+        opacity: .5;
+    }
+}
+
+.level-2 {
+    @include flex;
+    @include gap;
+    height: 240px;
+}
+
+.box {
+    flex: 1 0 0;
+    @include flex($justify: space-between, $align: flex-start);
+    margin-right: 15px;
+    padding: 20px;
+    border: $border;
+    &:last-child {
+        margin: 0;
+    }
+    .main-title {
+        font-size: $biggest;
+    }
+    .vice-title {
+        font-size: $big;
+        color: #c2c2c2;
+    }
+}
+
+.swipe {
+    @include gap;
+}
+
+.img-container {
+    position: relative;
+    color: $white;
+    .swipe-text {
+        position: absolute;
+        left: 15px;
+        bottom: 15px;
+    }
+}
+
+.swipe-btn-container {
+    @include flex;
+    @include gap(10px);
+    .swipe-btn {
+        margin: auto 5px;
+        width: 64px;
+        height: 3px;
+        background: $darkerwhite;
+        border-radius: 50px;
+    }
+    .selected {
+        background: #9a9a9a;
+    }
+}
+
+.sheet {
+    @include flex($flow: nowrap column);
+    @include gap(15px);
+    .sheet-tab {
+        @include flex;
+        width: 100%;
+        font-size: $big;
+        @include tab;
+    }
+    .tab-caption {
+        @include flex($justify: flex-start);
+        padding: 20px;
+        width: 100%;
+        height: 120px;
+        @include form-head;
+    }
+    .sheet-content {
+        @include flex($flow: nowrap column);
+        width: 100%;
+        border: {
+            top: $border;
+            bottom: $border;
+        }
+    }
+}
+
+.row {
+    @include flex;
+    width: 100%;
+    .col {
+        flex: 1 0 0;
+        @include flex;
+        padding: {
+            left: 20px;
+            right: 20px;
+        }
+        height: 60px;
+        border: {
+            top: $border;
+            bottom: $border;
+        }
+        text-align: center;
+        font-size: $smaller;
+    }
+}
+
+.col:nth-child(odd) {
+    background: $darkerwhite;
+}
+
+.col:first-of-type,
+.row:first-of-type .col,
+.row:last-of-type .col {
+    @include form-head;
+}
+
+.free {
+    color: #577a2d;
+}
+
+.low-price {
+    color: #5c92dc;
+}
+
+.high-price {
+    color: #c12e2d;
+}
+
+.per-month {
+    font-size: $smallest !important;
+    margin-bottom: 9px;
+}
+
+.contact {
+    @include gap(10px);
+    padding: 40px 80px;
+    height: 220px;
+    background: url('https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/form-background-left.png') 0% no-repeat, url('https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/form-background-right.png') 100% no-repeat;
+}
+
+.form {
+    @include flex($flow: wrap column, $justify: flex-end);
+    align-content: flex-start;
+    position: relative;
+    height: 138px;
+    .input {
+        padding-left: 15px;
+        margin: {
+            right: 10px;
+            bottom: 0;
+        }
+        width: 226px;
+        height: 36px;
+        color: #cdcdcd;
+        -webkit-appearance: none;
+        border: $border;
+        border-radius: 0;
+        outline: none;
+        &::-webkit-input-placeholder {
+            color: #cdcdcd;
+        }
+    }
+    .selection {
+        @extend .input;
+        margin-bottom: 15px !important;
+        background: url('https://raw.githubusercontent.com/StudentWan/efe-work-task/master/task02/static/img/form-arrow.png') no-repeat 95% center, $white;
+    }
+    .submit {
+        width: 100px;
+        height: 40px;
+        font: {
+            size: $smaller;
+            weight: 700
+        }
+        color: $white;
+        border: $border;
+        border-radius: 10px;
+        background: linear-gradient(to top,
+        #5f95de,
+        $white);
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+    }
+}
+
+.footer {
+  @include flex($align: flex-end);
+  height: 70px;
+  font-size: $smaller;
+}
