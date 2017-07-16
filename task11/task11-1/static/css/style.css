@@ -148,7 +148,7 @@ body, p {
 
   .article-detail {
     width: 60%;
-    border: 1px solid #eee; }
+    border-top: 2px solid #eee; }
 
   .sweep {
     float: right;

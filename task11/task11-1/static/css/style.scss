@@ -182,7 +182,7 @@ p {
     }
     .article-detail {
         @include leftwidth;
-        @include border;
+        border-top: 2px solid $lightgrey;
     }
     .sweep {
         @include rightcontent;
