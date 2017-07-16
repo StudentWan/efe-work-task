@@ -1,0 +1,42 @@
+.grid {
+    width: 100%;
+}
+
+.grid>.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-flow: wrap row;
+}
+
+.grid>.row-center {
+    align-items: center;
+}
+
+.row>.col-xs-1 {
+    flex: 0 0 32%;
+}
+
+.row>.col-xs-2 {
+    flex: 0 0 64%;
+}
+
+@media screen and (min-width: 1024px) {
+    .row>.col-1 {
+        flex: 0 0 32%;
+    }
+    .row>.col-2 {
+        flex: 0 0 66%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .row>.col-1 {
+        flex: 0 0 100%;
+        margin-bottom: .5em;
+    }
+    .row>.col-2 {
+        flex: 0 0 100%;
+        margin-bottom: .5em;
+    }
+}

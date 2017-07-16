@@ -68,6 +68,10 @@ body, p {
   font-size: 1rem;
   margin-top: 1em; }
   .article-detail .detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap row;
     margin-bottom: 1em; }
     .article-detail .detail .description .title {
       font-size: 2.4rem; }
@@ -107,18 +111,18 @@ body, p {
     align-items: center;
     flex-flow: wrap row; }
     .navigation .menu {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: #fff;
-      color: #000;
       display: flex;
       justify-content: space-around;
       align-items: center;
       flex-flow: wrap row;
+      z-index: 999;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      color: #000;
       border: 1px solid #eee;
-      z-index: 999; }
+      background: #fff; }
 
   .sweep {
     margin-top: 1em; }

@@ -103,6 +103,7 @@ p {
     font-size: 1rem;
     margin-top: 1em;
     .detail {
+        @include flex;
         margin-bottom: 1em;
         .description {
             .title {
@@ -156,15 +157,15 @@ p {
     .navigation {
         @include flex;
         .menu {
+            @include flex($justify: space-around);
+            z-index: 999;
             position: fixed;
             left: 0;
             right: 0;
             bottom: 0;
-            background: $ondark;
             color: $onlight;
-            @include flex($justify: space-around);
             border: 1px solid $lightgrey;
-            z-index: 999;
+            background: $ondark;
         }
     }
     .sweep {
