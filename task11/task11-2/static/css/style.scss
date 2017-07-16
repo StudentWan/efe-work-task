@@ -1,0 +1,178 @@
+@import '../bootstrap/css/bootstrap.min.css';
+$ondark: #fff;
+$onlight: #000;
+$lightgrey: #eee;
+$deepgrey: #d2d2d2;
+$title: 2.4rem;
+@mixin zero-margin($distance: 0) {
+    margin: $distance;
+}
+
+@mixin flex($justify: center, $align: center, $flow: wrap row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-flow: $flow;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    @include zero-margin;
+}
+
+p {
+    @extend body;
+}
+
+.navigation {
+    @include flex($justify: space-between);
+    padding: .5em;
+    height: 2.5em;
+    font-size: $title;
+    color: $ondark;
+    background: $onlight;
+    .menu {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+}
+
+.banner {
+    img {
+        max-width: 100%;
+    }
+}
+
+.main {
+    font-size: 1rem;
+    margin-top: 1em;
+}
+
+.article-view {
+    color: $ondark;
+    @each $count in 1,
+    2,
+    3 {
+        .view-#{$count} {
+            position: relative;
+        }
+    }
+    .view {
+        max-width: 100%;
+    }
+    .description {
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        bottom: 0;
+        max-height: 50%;
+        overflow: auto;
+        background: rgba(0, 0, 0, .5);
+        .title {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+.sweep {
+    position: relative;
+    color: $ondark;
+    .view {
+        max-width: 100%;
+    }
+    .description {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        .title {
+            font-size: $title;
+        }
+    }
+}
+
+.article-detail {
+    font-size: 1rem;
+    margin-top: 1em;
+    .detail {
+        margin-bottom: 1em;
+        .description {
+            .title {
+                font-size: $title;
+            }
+        }
+    }
+}
+
+.list {
+    .description {
+        .title {
+            font-size: $title;
+        }
+        .time {
+            font-size: 1rem;
+            color: $deepgrey;
+        }
+    }
+}
+
+.footer {
+    font-size: $title;
+    color: $ondark;
+    background: $deepgrey;
+    text-align: center;
+}
+
+@media screen and (min-width: 991px) {
+    .list {
+        margin-top: -50px;
+    }
+    .menu {
+        @include flex;
+        .menu-item {
+            margin-right: 1em;
+            &:last-of-type {
+                @include zero-margin;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:991px) and(max-width:1024px) {
+    .footer {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .navigation {
+        @include flex;
+        .menu {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: $ondark;
+            color: $onlight;
+            @include flex($justify: space-around);
+            border: 1px solid $lightgrey;
+            z-index: 999;
+        }
+    }
+    .sweep {
+        margin-top: 1em;
+    }
+    .list {
+        .description {
+            margin-bottom: .5em;
+        }
+    }
+}

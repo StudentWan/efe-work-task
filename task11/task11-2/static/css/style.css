@@ -1,0 +1,129 @@
+@import url(../bootstrap/css/bootstrap.min.css);
+* {
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
+
+body, p {
+  margin: 0; }
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: wrap row;
+  padding: .5em;
+  height: 2.5em;
+  font-size: 2.4rem;
+  color: #fff;
+  background: #000; }
+  .navigation .menu {
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+
+.banner img {
+  max-width: 100%; }
+
+.main {
+  font-size: 1rem;
+  margin-top: 1em; }
+
+.article-view {
+  color: #fff; }
+  .article-view .view-1 {
+    position: relative; }
+  .article-view .view-2 {
+    position: relative; }
+  .article-view .view-3 {
+    position: relative; }
+  .article-view .view {
+    max-width: 100%; }
+  .article-view .description {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    max-height: 50%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.5); }
+    .article-view .description .title {
+      font-size: 1.6rem; }
+
+.sweep {
+  position: relative;
+  color: #fff; }
+  .sweep .view {
+    max-width: 100%; }
+  .sweep .description {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
+    .sweep .description .title {
+      font-size: 2.4rem; }
+
+.article-detail {
+  font-size: 1rem;
+  margin-top: 1em; }
+  .article-detail .detail {
+    margin-bottom: 1em; }
+    .article-detail .detail .description .title {
+      font-size: 2.4rem; }
+
+.list .description .title {
+  font-size: 2.4rem; }
+.list .description .time {
+  font-size: 1rem;
+  color: #d2d2d2; }
+
+.footer {
+  font-size: 2.4rem;
+  color: #fff;
+  background: #d2d2d2;
+  text-align: center; }
+
+@media screen and (min-width: 991px) {
+  .list {
+    margin-top: -50px; }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap row; }
+    .menu .menu-item {
+      margin-right: 1em; }
+      .menu .menu-item:last-of-type {
+        margin: 0; } }
+@media screen and (min-width: 991px) and (max-width: 1024px) {
+  .footer {
+    display: none; } }
+@media screen and (max-width: 991px) {
+  .navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap row; }
+    .navigation .menu {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      color: #000;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-flow: wrap row;
+      border: 1px solid #eee;
+      z-index: 999; }
+
+  .sweep {
+    margin-top: 1em; }
+
+  .list .description {
+    margin-bottom: .5em; } }
+
+/*# sourceMappingURL=style.css.map */
