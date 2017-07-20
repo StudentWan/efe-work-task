@@ -19,20 +19,18 @@ module.exports = {
                 use: [{
                     loader: "style-loader"
                 }, {
-                    loader: "css-loader",
-                    options: {
-                        modules: true,
-                        localIdentName: '[path][name]__[local]--[hash:base64:5]'
-                    }
+                    loader: "css-loader"
                 }, {
                     loader: "less-loader"
                 }]
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
+                test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: '[name].[hash:7].[ext]'
+                }
             }
         ]
     },

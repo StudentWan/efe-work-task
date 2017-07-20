@@ -1,0 +1,81 @@
+@import 'style';
+@import 'onething';
+@import 'all';
+@import 'edit';
+@basic-color: #d9d9d9;
+.flex(@flow: row wrap, @justify: center, @align: center) {
+    display: flex;
+    flex-flow: @flow;
+    justify-content: @justify;
+    align-items: @align;
+}
+
+.title-size(@size: 2.4rem) {
+    font-size: @size;
+}
+
+.fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+.border {
+    border: 1px solid #eee;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Times New Roman', Times, sans-serif;
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.header {
+    .flex(@justify: space-between);
+    .fixed;
+    top: 0;
+    padding: .5em;
+    height: 4em;
+    background: @basic-color;
+    .title {
+        .title-size;
+    }
+    button {
+        border: 1px solid #000;
+        cursor: pointer;
+        outline: none;
+    }
+}
+
+.main {
+    margin-top: 4em;
+}
+
+.footer {
+    .flex(@align: stretch);
+    .fixed;
+    bottom: 0;
+    height: 4em;
+    background: @basic-color;
+    .sel {
+        font-weight: 700;
+    }
+    .one-thing,
+    .all {
+        .flex;
+        flex: 0 0 50%;
+        .title-size;
+        cursor: pointer;
+    }
+}

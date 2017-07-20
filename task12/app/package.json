@@ -15,11 +15,14 @@
     "babel-preset-env": "^1.6.0",
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
+    "font-awesome-webpack": "0.0.5-beta.2",
     "less-loader": "^4.0.5",
     "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
     "webpack": "^3.3.0"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "jquery": "^3.2.1",
     "less": "^2.7.2"

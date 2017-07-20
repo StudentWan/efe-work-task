@@ -1,0 +1,57 @@
+// 次模块的通用样式
+.btn-style {
+    [class^='btn-'] {
+        flex: auto;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+.cancel {
+    visibility: hidden;
+}
+
+.item {
+    position: relative;
+    .flex(@flow: row nowrap);
+    padding: .5em;
+    .title-size(2rem);
+    .border;
+    margin: .5em;
+    height: 4em;
+    .text {
+        margin: auto .5em;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.high {
+    color: #bf292a;
+}
+
+.medium {
+    color: #f5e65e;
+}
+
+.low {
+    color: #4d7324;
+}
+
+.rightchoose {
+    .flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100%;
+    background: #d9d9d9;
+    .btn-style;
+}
+
+.leftchoose:extend(.rightchoose) {
+    left: 0;
+    .btn-style;
+}
