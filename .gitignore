@@ -4,6 +4,6 @@
 
 *.idea*
 
-*.dist*
+*dist*
 
 !index.html
