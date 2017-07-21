@@ -13,15 +13,15 @@
 
 .item {
     position: relative;
-    .flex(@flow: row nowrap);
+    .flex(@flow: row nowrap, @justify: flex-start);
     padding: .5em;
     .title-size(2rem);
     .border;
     margin: .5em;
     height: 4em;
     .text {
+        flex:auto;
         margin: auto .5em;
-        text-align: center;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -29,15 +29,15 @@
 }
 
 .high {
-    color: #bf292a;
+    color: @high;
 }
 
 .medium {
-    color: #f5e65e;
+    color: @medium;
 }
 
 .low {
-    color: #4d7324;
+    color: @low;
 }
 
 .rightchoose {

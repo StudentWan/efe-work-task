@@ -3,6 +3,9 @@
 @import 'all';
 @import 'edit';
 @basic-color: #d9d9d9;
+@high: #bf292a;
+@medium: #f5e65e;
+@low: #4d7324;
 .flex(@flow: row wrap, @justify: center, @align: center) {
     display: flex;
     flex-flow: @flow;
@@ -48,6 +51,7 @@ p {
     padding: .5em;
     height: 4em;
     background: @basic-color;
+    z-index: 999;
     .title {
         .title-size;
     }
@@ -60,6 +64,7 @@ p {
 
 .main {
     margin-top: 4em;
+    margin-bottom: 5em;
 }
 
 .footer {
