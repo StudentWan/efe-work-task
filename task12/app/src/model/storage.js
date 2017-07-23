@@ -11,12 +11,12 @@ export function add(data) {
     localStorage.todoData = JSON.stringify(todoData)
 }
 
-export function getData() {
-    init()
-    return JSON.parse(localStorage.todoData)
-}
-
 export function modify(data) {
     init()
     localStorage.todoData = JSON.stringify(data)
+}
+
+export function getData() {
+    init()
+    return JSON.parse(localStorage.todoData)
 }

@@ -4,18 +4,20 @@ let data = {}
 let index
 export function render(...isEdit) {
     const header = $('.header')[0]
+    let prior, status, content, pos
     if (isEdit.length === 0) {
         header.lastElementChild.className = 'done-add'
-        header.lastElementChild.innerHTML = 'Done'
     } else {
         header.lastElementChild.className = 'done-edit'
-        header.lastElementChild.innerHTML = 'Done'
+        prior = isEdit[0]
+        status = isEdit[1]
+        content = isEdit[2]
+        pos = isEdit[3]
     }
-
+    header.lastElementChild.innerHTML = 'Done'
     header.firstElementChild.style.visibility = 'visible'
 
     const footer = $('.footer')[0]
-
     footer.firstElementChild.className = 'one-thing'
     footer.lastElementChild.className = 'all'
 
@@ -46,12 +48,12 @@ export function render(...isEdit) {
                      </div>
                      `
     if (isEdit.length > 0) {
-        $('.select-prior')[0].children[isEdit[0]].classList.add('sel')
-        data.prior = isEdit[0]
-        $('.select-status')[0].children[isEdit[1]].classList.add('sel')
-        data.status = isEdit[1]
-        $('#task-info')[0].value = isEdit[2]
-        index = isEdit[3]
+        $('.select-prior')[0].children[prior].classList.add('sel')
+        data.prior = prior
+        $('.select-status')[0].children[status].classList.add('sel')
+        data.status = status
+        $('#task-info')[0].value = content
+        index = pos
     }
 }
 

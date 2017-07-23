@@ -4,7 +4,6 @@ export function render() {
     const header = $('.header')[0]
     header.lastElementChild.className = 'add'
     header.lastElementChild.innerHTML = 'Add'
-
     header.firstElementChild.style.visibility = 'hidden'
 
     const main = $('#main')[0]
