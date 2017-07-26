@@ -3,6 +3,7 @@ import * as all from './controller/all'
 import * as edit from './controller/edit'
 import * as storage from './model/storage'
 
+
 import 'font-awesome-webpack'
 import './static/less/layout.less'
 
