@@ -1,21 +1,24 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import foo from './components/foo.vue'
-import bar from './components/bar.vue'
+import OneThing from './components/onething.vue'
+import All from './components/all.vue'
+import Edit from './components/edit.vue'
 
 Vue.use(VueRouter)
 
 export default new VueRouter({
     routes: [
-
         {
-            path: '/foo',
-            component: foo
+            path: '/',
+            component: OneThing
         },
         {
-            path: '/bar',
-            component: bar
+            path: '/all',
+            component: All
+        },
+        {
+            path: '/edit',
+            component: Edit
         }
-
     ]
 })

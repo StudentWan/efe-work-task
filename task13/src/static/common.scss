@@ -1,0 +1,104 @@
+$black: #000;
+$white: #fff;
+$deepgray: #d2d2d2;
+@mixin flex($flow: row wrap, $justify: center, $align: center) {
+    display: flex;
+    flex-flow: $flow;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin fixed($pos) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    #{$pos}: 0;
+}
+
+@mixin main {
+    .main {
+        margin-top: 5em;
+    }
+}
+
+@mixin title {
+    font-size: 2.4rem;
+}
+
+@mixin slogan {
+    font-size: 1.6rem;
+}
+
+@mixin banner($name, $color) {
+    .#{$name} {
+        padding: 0;
+        margin: 0;
+        @include flex;
+        height: 4em;
+        list-style: none;
+        background: $color;
+        .#{$name}-opt {
+            @include flex;
+            flex: auto;
+            margin: .5em;
+            @include slogan;
+            .fa {
+                margin-right: .5em;
+            }
+        }
+    }
+}
+
+@mixin bar($pos) {
+    .bar {
+        @include flex;
+        position: absolute;
+        #{$pos}: 0;
+        height: 100%;
+        width: 50%;
+        background: $deepgray;
+        .opt {
+            @include flex;
+            flex: auto;
+            height: 100%;
+        }
+    }
+}
+
+.btn {
+    border: 1px solid $black;
+    outline: none;
+    cursor: pointer;
+}
+
+.item {
+    position: relative;
+    @include flex($justify: space-around, $flow: row nowrap);
+    margin: .5em;
+    padding: .5em;
+    height: 5em;
+    border: 1px solid $deepgray;
+    .content {
+        flex: auto;
+        margin-left: .5em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.high {
+    color: #bf292a;
+}
+
+.medium {
+    color: #f5e65e;
+}
+
+.low {
+    color: #4d7324;
+}
+
+.sel {
+    font-weight: 700;
+}

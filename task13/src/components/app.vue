@@ -1,34 +1,31 @@
 <template>
-    <div :class="$style.message">
+    <div class="main">
         <header-common></header-common>
-        <p>{{ todos }}</p>
-        <router-link to="/foo">Go to Foo</router-link>
-        <router-link to="/bar">Go to Bar</router-link>
         <router-view></router-view>
+        <footer-common></footer-common>
     </div>
 </template>
 
 <script>
-import headerCommon from './partial/header.vue'
-export default {
-    data() {
-        return {
+    import HeaderCommon from './partial/header.vue'
+    import FooterCommon from './partial/footer.vue'
 
+    export default {
+        data() {
+            return {}
+        },
+        computed: {
+            todos() {
+                return this.$store.state.todos
+            }
+        },
+        components: {
+            HeaderCommon,
+            FooterCommon
         }
-    },
-    computed: {
-        todos() {
-            return this.$store.state.todos
-        }
-    },
-    components: {
-        headerCommon
     }
-}
 </script>
 
-<style lang="scss" module>
-.message {
-    color: blue;
-}
+<style lang="scss">
+    @import '../static/layout'
 </style>
