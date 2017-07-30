@@ -27,5 +27,5 @@
 </script>
 
 <style lang="scss">
-    @import '../static/layout'
+    @import '../static/layout';
 </style>

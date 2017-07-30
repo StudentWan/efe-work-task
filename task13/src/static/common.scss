@@ -1,5 +1,6 @@
 $black: #000;
 $white: #fff;
+$red: #bf292a;
 $deepgray: #d2d2d2;
 @mixin flex($flow: row wrap, $justify: center, $align: center) {
     display: flex;
@@ -18,6 +19,7 @@ $deepgray: #d2d2d2;
 @mixin main {
     .main {
         margin-top: 5em;
+        margin-bottom: 6em;
     }
 }
 
@@ -67,8 +69,10 @@ $deepgray: #d2d2d2;
 
 .btn {
     border: 1px solid $black;
+    padding: .5em;
     outline: none;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 .item {
@@ -88,7 +92,7 @@ $deepgray: #d2d2d2;
 }
 
 .high {
-    color: #bf292a;
+    color: $red;
 }
 
 .medium {
@@ -97,8 +101,4 @@ $deepgray: #d2d2d2;
 
 .low {
     color: #4d7324;
-}
-
-.sel {
-    font-weight: 700;
 }

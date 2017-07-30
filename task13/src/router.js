@@ -13,11 +13,11 @@ export default new VueRouter({
             component: OneThing
         },
         {
-            path: '/all',
+            path: '/all/:pattern',
             component: All
         },
         {
-            path: '/edit',
+            path: '/edit/:pattern',
             component: Edit
         }
     ]

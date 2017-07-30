@@ -5,7 +5,9 @@ import store from './store'
 import VueTouch from 'vue-touch'
 import 'font-awesome-webpack'
 
-Vue.use(VueTouch, {name: 'v-touch'})
+Vue.use(VueTouch, {
+    name: 'v-touch'
+})
 
 new Vue({
     el: '#app',
