@@ -88,15 +88,11 @@ export default {
     },
     mounted() {
         BUS.$on('enable-pan', () => {
-            try {
-                for (let i = 0, lens = this.todoData.length; i < lens; i++) {
-                    this.checkBar[i].isLeftOn = false
-                    this.checkBar[i].isRightOn = false
-                }
-                this.enablePan(this.todoData)
-            } catch (e) {
-                console.log(e)
+            for (let i = 0, lens = this.todoData.length; i < lens; i++) {
+                this.checkBar[i].isLeftOn = false
+                this.checkBar[i].isRightOn = false
             }
+            this.enablePan(this.todoData)
             this.$store.commit('changeOptions', { setCancel: false, setBar: false })
         })
     },
