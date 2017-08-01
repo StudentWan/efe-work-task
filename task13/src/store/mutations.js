@@ -1,4 +1,4 @@
-import {setLocalStorage} from "./plugin.js"
+import setLocalStorage from "./plugin.js"
 import Vue from 'vue'
 
 export const state = {
