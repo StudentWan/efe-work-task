@@ -1,0 +1,49 @@
+$deepgray: #d2d2d2;
+$black: #000;
+$white: #fff;
+
+@mixin flex($flow: row wrap, $justify: center, $align: center) {
+    display: flex;
+    flex-flow: $flow;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+.title {
+    font-size: 2.4rem;
+}
+
+.btn {
+    border: 1px solid $black;
+}
+
+.bar {
+    flex: auto;
+    text-align: center;
+}
+
+[class$='-main'] {
+    margin-top: 5em;
+}
+
+.item {
+    position: relative;
+    @include flex($justify: space-around, $flow: row nowrap);
+    margin: .5em;
+    padding: .5em;
+    overflow: hidden;
+    height: 5em;
+    border: 1px solid $deepgray;
+    .content {
+        flex: auto;
+        margin-left: .5em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.link {
+    text-decoration: none;
+    color: $black;
+}
