@@ -3,10 +3,14 @@
         <div class="header">
             <button class="btn">Cancel</button>
             <p class="title">Todo</p>
-            <button class="btn">Add</button>
+            <router-link class="btn link" to="/edit/new">Add</router-link>
         </div>
 
-        <div id="main"></div>
+        <div id="main">
+            <onething s-if="path===0"></onething>
+            <all s-if="path===1"></all>
+            <edit s-if="path===2"></edit>
+        </div>
 
         <div class="footer">
             <router-link class="bar title link" to="/">Onething</router-link>
@@ -16,12 +20,21 @@
 </template>
 
 <script>
-import {Link} from 'san-router'
-export default {
-    components: {
-        'router-link': Link
+    import {Link} from 'san-router'
+    import Onething from './Onething.san'
+    import All from './All.san'
+    import Edit from './Edit.san'
+    export default {
+        initData: function () {
+            path: -1
+        },
+        components: {
+            'router-link': Link,
+            'onething': Onething,
+            'all': All,
+            'edit': Edit
+        }
     }
-}
 </script>
 
 <style lang="scss">

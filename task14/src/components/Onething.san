@@ -2,7 +2,7 @@
     <div class="onething-main">
         <p class="title slogan">Now, the one thing is:</p>
         <div class="item">
-            <i class="fa fa-play" aria-hidden="true"></i>
+            <i class="fa fa-play high" aria-hidden="true"></i>
             <div class="content">Some Text, Some Text, Some Text, Some Text, Some Text, Some Text,Some Text, Some Text, Some Text, Some Text</div>
         </div>
     </div>
@@ -13,9 +13,6 @@
     export default {
         components: {
             'router-link': Link
-        },
-        attached: function () {
-            console.log(this.data.get('route'))
         }
     }
 </script>

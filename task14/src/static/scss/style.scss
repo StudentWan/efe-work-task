@@ -1,7 +1,6 @@
 $deepgray: #d2d2d2;
 $black: #000;
 $white: #fff;
-
 @mixin flex($flow: row wrap, $justify: center, $align: center) {
     display: flex;
     flex-flow: $flow;
@@ -15,6 +14,7 @@ $white: #fff;
 
 .btn {
     border: 1px solid $black;
+    padding: .5em;
 }
 
 .bar {
@@ -46,4 +46,36 @@ $white: #fff;
 .link {
     text-decoration: none;
     color: $black;
+}
+
+.high {
+    color: #bf292a;
+}
+
+.medium {
+    color: #f5e65e;
+}
+
+.low {
+    color: #4d7324;
+}
+
+[class^="select-"] {
+    @include flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 3em;
+    font-size: 1.6rem;
+    [class$="-opt"] {
+        @include flex;
+        flex: auto;
+    }
+    .sign {
+        margin-left: .2em;
+    }
+}
+
+.hide {
+    visibility: hidden
 }
