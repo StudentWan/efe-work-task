@@ -79,3 +79,17 @@ $white: #fff;
 .hide {
     visibility: hidden
 }
+
+.choose {
+    @include flex;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: $deepgray;
+}
+
+.choose-item {
+    @include flex;
+    flex: auto;
+    height: 100%;
+}

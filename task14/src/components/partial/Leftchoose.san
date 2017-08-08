@@ -1,0 +1,21 @@
+<template>
+<div class="choose change-choose" on-click="doChange">
+    <div class="choose-item">已完成</div>
+    <div class="choose-item">待办</div>
+    <div class="choose-item">进行中</div>
+</div>
+</template>
+
+<script>
+export default {
+    doChange: function () {
+        this.fire('enablepan')
+    }
+}
+</script>
+
+<style lang="scss">
+.change-choose {
+    left: 0;
+}
+</style>

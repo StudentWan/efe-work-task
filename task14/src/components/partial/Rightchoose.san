@@ -1,0 +1,20 @@
+<template>
+<div class="choose edit-choose" on-click="doEdit">
+    <div class="choose-item">编辑</div>
+    <div class="choose-item">删除</div>
+</div>
+</template>
+
+<script>
+export default {
+    doEdit: function () {
+        this.fire('enablepan')
+    }
+}
+</script>
+
+<style lang="scss">
+.edit-choose {
+    right: 0;
+}
+</style>

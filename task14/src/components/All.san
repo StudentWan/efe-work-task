@@ -1,47 +1,95 @@
 <template>
     <div class="all-main">
         <ul class="select-prior">
-            <li class="prior-opt" id="prior-high">
+            <li class="prior-opt">
                 <i class="fa fa-circle high" aria-hidden="true"></i>
                 <span class="sign">高优</span> 
             </li>
-            <li class="prior-opt" id="prior-medium">
+            <li class="prior-opt">
                 <i class="fa fa-circle medium" aria-hidden="true"></i>
                 <span class="sign">中优</span> 
             </li>
-            <li class="prior-opt" id="prior-low">
+            <li class="prior-opt">
                 <i class="fa fa-circle low" aria-hidden="true"></i>
                 <span class="sign">低优</span> 
             </li>
         </ul>
         <ul class="select-status">
-            <li class="status-opt" id="status-high">
+            <li class="status-opt">
                 <i class="fa fa-play" aria-hidden="true"></i>
                 <span class="sign">进行中</span> 
             </li>
-            <li class="status-opt" id="status-medium">
+            <li class="status-opt">
                 <i class="fa fa-pause" aria-hidden="true"></i>
                 <span class="sign">待办</span> 
             </li>
-            <li class="status-opt" id="status-low">
+            <li class="status-opt">
                 <i class="fa fa-stop" aria-hidden="true"></i>
                 <span class="sign">已完成</span> 
             </li>
         </ul>
-        <div class="list">
-            <div class="item">
-                <i class="fa fa-play high" aria-hidden="true"></i>
-                <div class="content">Some Text, Some Text, Some Text, Some Text, Some Text, Some Text,Some Text, Some Text, Some Text, Some Text</div>
-            </div>
+        <div class="list" on-touchstart="startTouch($event)" on-touchend="endTouch($event)">
+                <div class="item" s-for="item, index in items" data-index="{{index}}">
+                    <i class="fa fa-play high" aria-hidden="true"></i>
+                    <div class="content">Some Text, Some Text, Some Text, Some Text, Some Text, Some Text,Some Text, Some Text, Some Text, Some Text</div>
+                    <left-choose s-if="checkChoose[index].isLeftOn" on-enablepan="enablePan(index)"></left-choose>
+                    <right-choose s-if="checkChoose[index].isRightOn" on-enablepan="enablePan(index)"></right-choose>
+                </div>
         </div>
     </div>
 </template>
 
 <script>
     import {Link} from 'san-router'
+    import LeftChoose from './partial/Leftchoose.san'
+    import RightChoose from './partial/Rightchoose.san'
     export default {
+        initData: function () {
+            return {
+                items: [1, 2],
+                checkChoose: [{isLeftOn: false, isRightOn: false}, {isLeftOn: false, isRightOn: false}],
+                isTouchMoved: false
+            }
+        },
+        attached: function () {
+            this.data.set('LIST', document.getElementsByClassName('list')[0])
+        },
         components: {
-            'router-link': Link
+            'router-link': Link,
+            'left-choose': LeftChoose,
+            'right-choose': RightChoose
+        },
+        startTouch: function (e) {
+                if(!this.data.get('isTouchMoved')) {
+                    let target
+                    if (e.target.className === 'item') {
+                        target = e.target
+                    } else if(e.target.parentNode.className === 'item') {
+                        target = e.target.parentNode
+                    }
+                    this.data.set('startX', e.touches[0].pageX)
+                    this.data.set('selectedIndex', target.dataset.index)
+                }
+        },
+        endTouch: function (e) {
+            if(!this.data.get('isTouchMoved')) {
+                let endX = e.changedTouches[0].pageX
+                let startX = this.data.get('startX')
+                let index = this.data.get('selectedIndex')
+                if(startX - endX > 0 ) {
+                    this.data.set(`checkChoose[${index}].isRightOn` , true)
+                } else {
+                    this.data.set(`checkChoose[${index}].isLeftOn` , true)
+                }
+                this.data.set('isTouchMoved', true)
+                this.fire('chooseon')
+            }
+        },
+        enablePan(index) {
+            this.data.set('isTouchMoved', false)
+            this.data.set(`checkChoose[${index}].isRightOn` , false)
+            this.data.set(`checkChoose[${index}].isLeftOn` , false)
+            this.fire('chooseoff')
         }
     }
 </script>

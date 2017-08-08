@@ -1,20 +1,22 @@
 <template>
     <div id="app">
         <div class="header">
-            <button class="btn">Cancel</button>
+            <router-link class="btn link" to="/all" s-if="path === 2">Cancel</router-link>
+            <router-link class="btn link hide" to="/" s-if="path !== 2 && isChooseOn === false">Cancel</router-link>
+            <button class="btn link" s-if="isChooseOn" on-click="cancelChoose">Cancel</button>
             <p class="title">Todo</p>
             <router-link class="btn link" to="/edit/new">Add</router-link>
         </div>
 
         <div id="main">
             <onething s-if="path===0"></onething>
-            <all s-if="path===1"></all>
+            <all s-if="path===1" on-chooseon="setChooseOn" on-chooseoff="setChooseOff" s-ref="all"></all>
             <edit s-if="path===2"></edit>
         </div>
 
         <div class="footer">
-            <router-link class="bar title link" to="/">Onething</router-link>
-            <router-link class="bar title link" to="/all">All</router-link>
+            <router-link class="bar title link{{ path===0 ? ' sel-footer' : '' }}" to="/">Onething</router-link>
+            <router-link class="bar title link{{ path===1 ? ' sel-footer' : '' }}" to="/all">All</router-link>
         </div>
     </div>
 </template>
@@ -26,13 +28,25 @@
     import Edit from './Edit.san'
     export default {
         initData: function () {
-            path: -1
+            return {
+                path: -1,
+                isChooseOn: false
+                }
         },
         components: {
             'router-link': Link,
             'onething': Onething,
             'all': All,
             'edit': Edit
+        },
+        setChooseOn: function () {
+            this.data.set('isChooseOn', true)
+        },
+        setChooseOff: function () {
+            this.data.set('isChooseOn', false)
+        },
+        cancelChoose: function () {
+            this.ref('all').enablePan(this.ref('all').data.get('selectedIndex'))
         }
     }
 </script>
@@ -41,21 +55,21 @@
     @import '../static/scss/style.scss';
     .header {
         @include flex($justify: space-between)
-        position: fixed;
         top: 0;
+        padding: .5em;
+    }
+    .footer {
+        @include flex;
+        bottom: 0;
+    }
+    .header, .footer {
+        position: fixed;
         left: 0;
         right: 0;
-        padding: .5em;
         height: 5em;
         background: $deepgray;
     }
-    .footer {
-            @include flex;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 5em;
-            background: $deepgray;
+    .sel-footer {
+        font-weight: 700;
     }
 </style>

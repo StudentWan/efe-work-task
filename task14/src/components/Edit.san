@@ -1,29 +1,29 @@
 <template>
 <div class="edit-main">
     <ul class="select-prior-edit">
-        <li class="prior-opt" id="prior-high">
+        <li class="prior-opt">
             <i class="fa fa-circle high" aria-hidden="true"></i>
             <span class="sign">高优</span> 
         </li>
-        <li class="prior-opt" id="prior-medium">
+        <li class="prior-opt">
             <i class="fa fa-circle medium" aria-hidden="true"></i>
             <span class="sign">中优</span> 
         </li>
-        <li class="prior-opt" id="prior-low">
+        <li class="prior-opt">
             <i class="fa fa-circle low" aria-hidden="true"></i>
             <span class="sign">低优</span> 
         </li>
     </ul>
     <ul class="select-status-edit">
-        <li class="status-opt" id="status-high">
+        <li class="status-opt">
             <i class="fa fa-play" aria-hidden="true"></i>
             <span class="sign">进行中</span> 
         </li>
-        <li class="status-opt" id="status-medium">
+        <li class="status-opt">
             <i class="fa fa-pause" aria-hidden="true"></i>
             <span class="sign">待办</span> 
         </li>
-        <li class="status-opt" id="status-low">
+        <li class="status-opt">
             <i class="fa fa-stop" aria-hidden="true"></i>
             <span class="sign">已完成</span> 
         </li>
