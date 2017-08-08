@@ -6,6 +6,7 @@ import All from './components/All.san'
 import Edit from './components/Edit.san'
 
 import {router} from 'san-router'
+import './action.js'
 
 import 'font-awesome-webpack'
 import './static/scss/layout.scss'
@@ -23,6 +24,10 @@ router.add({rule: '/all', handler(e) {
 }})
 router.add({rule: '/edit/:id', handler(e) {
     app.data.set('path', 2)
+    app.data.set('isChooseOn', false)
+    if(e.path === '/edit/change') {
+        app.data.set('index', e.query.index)
+    }
 }})
 router.start()
 

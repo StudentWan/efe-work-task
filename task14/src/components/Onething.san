@@ -1,20 +1,29 @@
 <template>
     <div class="onething-main">
         <p class="title slogan">Now, the one thing is:</p>
-        <div class="item">
+        <div class="item" s-if="item">
             <i class="fa fa-play high" aria-hidden="true"></i>
-            <div class="content">Some Text, Some Text, Some Text, Some Text, Some Text, Some Text,Some Text, Some Text, Some Text, Some Text</div>
+            <div class="content">{{item.content}}</div>
         </div>
     </div>
 </template>
 
 <script>
     import {Link} from 'san-router'
-    export default {
+    import {connect} from 'san-store'
+    export default connect.san({todos: 'todos'}) ({
         components: {
             'router-link': Link
+        },
+        attached: function () {
+            for (let item of this.data.get('todos')) {
+                if(item.prior === '0' && item.status === '0') {
+                    this.data.set('item', item)
+                    break
+                }
+            }
         }
-    }
+    })
 </script>
 
 <style lang="scss">

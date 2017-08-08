@@ -39,6 +39,8 @@
     "node-sass": "^4.5.3",
     "ora": "^0.2.0",
     "san-loader": "github:ecomfe/san-loader",
+    "san-store": "^1.0.1",
+    "san-update": "^2.1.0",
     "sass-loader": "^6.0.6",
     "shelljs": "^0.6.0",
     "style-loader": "^0.13.1",

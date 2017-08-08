@@ -24,6 +24,7 @@ $white: #fff;
 
 [class$='-main'] {
     margin-top: 5em;
+    margin-bottom: 5.5em;
 }
 
 .item {
@@ -67,7 +68,7 @@ $white: #fff;
     margin: 0;
     height: 3em;
     font-size: 1.6rem;
-    [class$="-opt"] {
+    .prior-opt, .status-opt {
         @include flex;
         flex: auto;
     }

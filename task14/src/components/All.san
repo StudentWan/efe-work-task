@@ -1,39 +1,42 @@
 <template>
     <div class="all-main">
-        <ul class="select-prior">
-            <li class="prior-opt">
-                <i class="fa fa-circle high" aria-hidden="true"></i>
-                <span class="sign">高优</span> 
-            </li>
-            <li class="prior-opt">
-                <i class="fa fa-circle medium" aria-hidden="true"></i>
-                <span class="sign">中优</span> 
-            </li>
-            <li class="prior-opt">
-                <i class="fa fa-circle low" aria-hidden="true"></i>
-                <span class="sign">低优</span> 
-            </li>
-        </ul>
-        <ul class="select-status">
-            <li class="status-opt">
-                <i class="fa fa-play" aria-hidden="true"></i>
-                <span class="sign">进行中</span> 
-            </li>
-            <li class="status-opt">
-                <i class="fa fa-pause" aria-hidden="true"></i>
-                <span class="sign">待办</span> 
-            </li>
-            <li class="status-opt">
-                <i class="fa fa-stop" aria-hidden="true"></i>
-                <span class="sign">已完成</span> 
-            </li>
-        </ul>
+        <div class="selector" on-click="chooseDisplay($event)">
+            <ul class="select-prior">
+                <li class="prior-opt" tag="0">
+                    <i class="fa fa-circle high" aria-hidden="true"></i>
+                    <span class="sign">高优</span> 
+                </li>
+                <li class="prior-opt" tag="1">
+                    <i class="fa fa-circle medium" aria-hidden="true"></i>
+                    <span class="sign">中优</span> 
+                </li>
+                <li class="prior-opt" tag="2">
+                    <i class="fa fa-circle low" aria-hidden="true"></i>
+                    <span class="sign">低优</span> 
+                </li>
+            </ul>
+            <ul class="select-status">
+                <li class="status-opt" tag="0">
+                    <i class="fa fa-play" aria-hidden="true"></i>
+                    <span class="sign">进行中</span> 
+                </li>
+                <li class="status-opt" tag="1">
+                    <i class="fa fa-pause" aria-hidden="true"></i>
+                    <span class="sign">待办</span> 
+                </li>
+                <li class="status-opt" tag="2">
+                    <i class="fa fa-stop" aria-hidden="true"></i>
+                    <span class="sign">已完成</span> 
+                </li>
+            </ul>
+        </div>
         <div class="list" on-touchstart="startTouch($event)" on-touchend="endTouch($event)">
-                <div class="item" s-for="item, index in items" data-index="{{index}}">
-                    <i class="fa fa-play high" aria-hidden="true"></i>
-                    <div class="content">Some Text, Some Text, Some Text, Some Text, Some Text, Some Text,Some Text, Some Text, Some Text, Some Text</div>
-                    <left-choose s-if="checkChoose[index].isLeftOn" on-enablepan="enablePan(index)"></left-choose>
-                    <right-choose s-if="checkChoose[index].isRightOn" on-enablepan="enablePan(index)"></right-choose>
+                <div class="item" s-for="item, index in filterTodos" data-index="{{index}}">
+                    <i class="fa{{item.status === '0' ? ' fa-play' : ''}}{{item.status === '1' ? ' fa-pause': ''}}{{item.status === '2'? ' fa-stop' : ''}}
+                                {{item.prior === '0' ? ' high' : ''}}{{item.prior === '1' ? 'medium' : ''}}{{item.prior === '2' ? ' low' : ''}}" aria-hidden="true"  ></i>
+                    <div class="content">{{item.content}}</div>
+                    <left-choose s-if="checkChoose[index].isLeftOn" on-enablepan="enablePan(index)" index="{{index}}"></left-choose>
+                    <right-choose s-if="checkChoose[index].isRightOn" on-enablepan="enablePan(index)" index="{{index}}"></right-choose>
                 </div>
         </div>
     </div>
@@ -41,18 +44,33 @@
 
 <script>
     import {Link} from 'san-router'
+    import {connect} from 'san-store'
     import LeftChoose from './partial/Leftchoose.san'
     import RightChoose from './partial/Rightchoose.san'
-    export default {
+    export default connect.san({todos: 'todos'}, {}) ({
         initData: function () {
             return {
                 items: [1, 2],
-                checkChoose: [{isLeftOn: false, isRightOn: false}, {isLeftOn: false, isRightOn: false}],
-                isTouchMoved: false
+                checkChoose: [],
+                isTouchMoved: false,
+                priorChosen: {
+                    '0': false,
+                    '1': false,
+                    '2': false
+                },
+                statusChosen: {
+                    '0': false,
+                    '1': false,
+                    '2': false
+                }
             }
         },
         attached: function () {
-            this.data.set('LIST', document.getElementsByClassName('list')[0])
+            let lens = this.data.get('todos').length
+            while(lens > 0) {
+                this.data.push('checkChoose', {isLeftOn: false, isRightOn: false})
+                lens--;
+            }
         },
         components: {
             'router-link': Link,
@@ -85,13 +103,73 @@
                 this.fire('chooseon')
             }
         },
-        enablePan(index) {
+        enablePan: function (index) {
             this.data.set('isTouchMoved', false)
             this.data.set(`checkChoose[${index}].isRightOn` , false)
             this.data.set(`checkChoose[${index}].isLeftOn` , false)
             this.fire('chooseoff')
+        },
+        chooseDisplay: function (e) {
+            let target
+            if (e.target.classList.contains('prior-opt') || e.target.classList.contains('status-opt')) {
+                target = e.target
+            }
+            if (e.target.parentNode.classList.contains('prior-opt') || e.target.parentNode.classList.contains('status-opt')) {
+                target = e.target.parentNode
+            }
+            if (target) {
+                target.classList.toggle('sel')
+                let tag = target.getAttribute('tag')
+                if (target.classList.contains('prior-opt')) {
+                    if (target.classList.contains('sel')) {
+                        this.data.set(`priorChosen[${tag}]`, true)
+                    } else {
+                        this.data.set(`priorChosen[${tag}]`, false)
+                    }
+                }
+                if (target.classList.contains('status-opt')) {
+                    if (target.classList.contains('sel')) {
+                        this.data.set(`statusChosen[${tag}]`, true)
+                    } else {
+                        this.data.set(`statusChosen[${tag}]`, false)
+                    }
+                }
+            }
+        },
+        computed: {
+            filterTodos: function () {
+                let todos = this.data.get('todos')
+                if(todos) {
+                    return todos.filter((todo) => {
+                        let prior = todo.prior
+                        let status = todo.status
+                        if (this.data.get(`priorChosen[${prior}]`) || this.data.get(`statusChosen[${status}]`, true)) {
+                            return true
+                        }
+
+                        let noPrior = true
+                        let noStatus = true
+                        for (let i = 0, lens = Object.keys(this.data.get('priorChosen')).length; i < lens; i++) {
+                            if (this.data.get(`priorChosen[${i}]`)) {
+                                noPrior = false
+                                break
+                            }
+                        }
+                        for (let i = 0, lens = Object.keys(this.data.get('statusChosen')).length; i < lens; i++) {
+                            if (this.data.get(`statusChosen[${i}]`)) {
+                                noStatus = false
+                                break
+                            }
+                        }
+                        if (noPrior && noStatus) {
+                            return true
+                        }
+                        return false
+                    })
+                }
+            }
         }
-    }
+    })
 </script>
 
 <style lang="scss">
@@ -101,5 +179,9 @@
 
     .select-status {
         background: #f0feed;
+    }
+
+    .sel {
+        background: #2aabd2;
     }
 </style>

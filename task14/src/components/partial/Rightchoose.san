@@ -1,16 +1,25 @@
 <template>
-<div class="choose edit-choose" on-click="doEdit">
-    <div class="choose-item">编辑</div>
-    <div class="choose-item">删除</div>
+<div class="choose edit-choose" on-click="doEdit($event)">
+    <router-link class="choose-item link" to="/edit/change?index={{index}}">编辑</router-link>
+    <div class="choose-item" id="delete">删除</div>
 </div>
 </template>
 
 <script>
-export default {
-    doEdit: function () {
+import {Link} from 'san-router'
+import {connect} from 'san-store'
+export default connect.san({}, {delete: 'deleteTodo'}) ({
+    doEdit: function (e) {
+        if(e.target.id === 'delete') {
+            this.actions.delete(this.data.get('index'))
+        }
+        this.dispatch('chooseoff')
         this.fire('enablepan')
+    },
+    components: {
+        'router-link': Link
     }
-}
+})
 </script>
 
 <style lang="scss">

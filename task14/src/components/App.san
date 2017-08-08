@@ -3,30 +3,32 @@
         <div class="header">
             <router-link class="btn link" to="/all" s-if="path === 2">Cancel</router-link>
             <router-link class="btn link hide" to="/" s-if="path !== 2 && isChooseOn === false">Cancel</router-link>
-            <button class="btn link" s-if="isChooseOn" on-click="cancelChoose">Cancel</button>
+            <router-link class="btn link" s-if="isChooseOn"><span on-click="cancelChoose">Cancel</span></router-link>
             <p class="title">Todo</p>
-            <router-link class="btn link" to="/edit/new">Add</router-link>
+            <router-link class="btn link" to="/all" s-if="path === 2"><span on-click="editTodo(index)">Done</span></router-link>
+            <router-link class="btn link" to="/edit/new" s-else>Add</router-link>
         </div>
 
         <div id="main">
             <onething s-if="path===0"></onething>
             <all s-if="path===1" on-chooseon="setChooseOn" on-chooseoff="setChooseOff" s-ref="all"></all>
-            <edit s-if="path===2"></edit>
+            <edit s-if="path===2" s-ref="edit" index="{{index}}" on-clearindex="clearIndex"></edit>
         </div>
 
         <div class="footer">
-            <router-link class="bar title link{{ path===0 ? ' sel-footer' : '' }}" to="/">Onething</router-link>
-            <router-link class="bar title link{{ path===1 ? ' sel-footer' : '' }}" to="/all">All</router-link>
+            <router-link class="bar title link{{ path === 0 ? ' sel-footer' : '' }}" to="/">Onething</router-link>
+            <router-link class="bar title link{{ path === 1 ? ' sel-footer' : '' }}" to="/all">All</router-link>
         </div>
     </div>
 </template>
 
 <script>
     import {Link} from 'san-router'
+    import {connect} from 'san-store'
     import Onething from './Onething.san'
     import All from './All.san'
     import Edit from './Edit.san'
-    export default {
+    export default connect.san({}, {add: 'addTodo', modify: 'modifyTodo', init: 'init'}) ({
         initData: function () {
             return {
                 path: -1,
@@ -39,6 +41,14 @@
             'all': All,
             'edit': Edit
         },
+        messages: {
+            'chooseoff': function () {
+                this.setChooseOff()
+            }
+        },
+        attached: function () {
+            this.actions.init()
+        },
         setChooseOn: function () {
             this.data.set('isChooseOn', true)
         },
@@ -47,8 +57,18 @@
         },
         cancelChoose: function () {
             this.ref('all').enablePan(this.ref('all').data.get('selectedIndex'))
+        },
+        editTodo: function (index) {
+            if(!index) {
+                this.actions.add(this.ref('edit').data.get('todo'))
+                return 
+            }
+            this.actions.modify({todo: this.ref('edit').data.get('todo'), index: index})
+        },
+        clearIndex: function () {
+            this.data.set('index', undefined)
         }
-    }
+    })
 </script>
 
 <style lang="scss">

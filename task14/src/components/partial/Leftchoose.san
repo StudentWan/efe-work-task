@@ -1,17 +1,31 @@
 <template>
-<div class="choose change-choose" on-click="doChange">
-    <div class="choose-item">已完成</div>
-    <div class="choose-item">待办</div>
-    <div class="choose-item">进行中</div>
+<div class="choose change-choose" on-click="doChange($event)">
+    <div class="choose-item" id="done">已完成</div>
+    <div class="choose-item" id="wait">待办</div>
+    <div class="choose-item" id="now">进行中</div>
 </div>
 </template>
 
 <script>
-export default {
-    doChange: function () {
+import {connect} from 'san-store'
+export default connect.san({}, {modify: 'modifyStatus'}) ({
+    doChange: function (e) {
+        let status
+        switch (e.target.id) {
+            case 'done':
+                status = '2'
+                break
+            case 'wait':
+                status = '1'
+                break
+            case 'now':
+                status = '0'
+                break
+        }
+        this.actions.modify({index: this.data.get('index'), status: status})
         this.fire('enablepan')
     }
-}
+})
 </script>
 
 <style lang="scss">
