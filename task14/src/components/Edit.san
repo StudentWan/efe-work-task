@@ -1,40 +1,41 @@
 <template>
-<div class="edit-main">
-    <ul class="select-prior-edit" on-click="setPrior($event)">
-        <li class="prior-opt{{todo.prior === '0' ? ' sel-opt' : ''}}" data-index="0">
-            <i class="fa fa-circle high" aria-hidden="true"></i>
-            <span class="sign">高优</span> 
-        </li>
-        <li class="prior-opt{{todo.prior === '1' ? ' sel-opt' : ''}}" data-index="1">
-            <i class="fa fa-circle medium" aria-hidden="true"></i>
-            <span class="sign">中优</span> 
-        </li>
-        <li class="prior-opt{{todo.prior === '2' ? ' sel-opt' : ''}}" data-index="2">
-            <i class="fa fa-circle low" aria-hidden="true"></i>
-            <span class="sign">低优</span> 
-        </li>
-    </ul>
-    <ul class="select-status-edit" on-click="setStatus($event)">
-        <li class="status-opt{{todo.status === '0' ? ' sel-opt' : ''}}" data-index="0">
-            <i class="fa fa-play" aria-hidden="true"></i>
-            <span class="sign">进行中</span> 
-        </li>
-        <li class="status-opt{{todo.status === '1' ? ' sel-opt' : ''}}" data-index="1">
-            <i class="fa fa-pause" aria-hidden="true"></i>
-            <span class="sign">待办</span> 
-        </li>
-        <li class="status-opt{{todo.status === '2' ? ' sel-opt' : ''}}" data-index="2">
-            <i class="fa fa-stop" aria-hidden="true"></i>
-            <span class="sign">已完成</span> 
-        </li>
-    </ul>
-    <textarea name="" id="" class="edit-content" cols="50" rows="10" value="{=todo.content=}"></textarea>
-</div>
+    <div class="edit-main">
+        <ul class="select-prior-edit" on-click="setPrior($event)">
+            <li class="prior-opt{{todo.prior === '0' ? ' sel-opt' : ''}}" data-index="0">
+                <i class="fa fa-circle high" aria-hidden="true"></i>
+                <span class="sign">高优</span>
+            </li>
+            <li class="prior-opt{{todo.prior === '1' ? ' sel-opt' : ''}}" data-index="1">
+                <i class="fa fa-circle medium" aria-hidden="true"></i>
+                <span class="sign">中优</span>
+            </li>
+            <li class="prior-opt{{todo.prior === '2' ? ' sel-opt' : ''}}" data-index="2">
+                <i class="fa fa-circle low" aria-hidden="true"></i>
+                <span class="sign">低优</span>
+            </li>
+        </ul>
+        <ul class="select-status-edit" on-click="setStatus($event)">
+            <li class="status-opt{{todo.status === '0' ? ' sel-opt' : ''}}" data-index="0">
+                <i class="fa fa-play" aria-hidden="true"></i>
+                <span class="sign">进行中</span>
+            </li>
+            <li class="status-opt{{todo.status === '1' ? ' sel-opt' : ''}}" data-index="1">
+                <i class="fa fa-pause" aria-hidden="true"></i>
+                <span class="sign">待办</span>
+            </li>
+            <li class="status-opt{{todo.status === '2' ? ' sel-opt' : ''}}" data-index="2">
+                <i class="fa fa-stop" aria-hidden="true"></i>
+                <span class="sign">已完成</span>
+            </li>
+        </ul>
+        <textarea name="" id="" class="edit-content" cols="50" rows="10" value="{=todo.content=}"></textarea>
+    </div>
 </template>
 
 <script>
-    import { connect } from 'san-store'
-    export default connect.san({todos: 'todos'}, {add: 'addTodo'}) ({
+    import {connect} from 'san-store'
+
+    export default connect.san({todos: 'todos'}, {add: 'addTodo'})({
         initData: function () {
             return {
                 todo: {
@@ -45,7 +46,7 @@
             }
         },
         attached: function () {
-            if(this.data.get('index')) {
+            if (this.data.get('index')) {
                 this.data.set('todo', this.data.get('todos')[this.data.get('index')])
             }
         },
@@ -53,10 +54,10 @@
             let target
             if (e.target.className === 'prior-opt') {
                 target = e.target
-            } else if(e.target.parentNode.className === 'prior-opt') {
+            } else if (e.target.parentNode.className === 'prior-opt') {
                 target = e.target.parentNode
             }
-            if(target) {
+            if (target) {
                 this.data.set('todo.prior', target.dataset.index)
             }
         },
@@ -64,10 +65,10 @@
             let target
             if (e.target.className === 'status-opt') {
                 target = e.target
-            } else if(e.target.parentNode.className === 'status-opt') {
+            } else if (e.target.parentNode.className === 'status-opt') {
                 target = e.target.parentNode
             }
-            if(target) {
+            if (target) {
                 this.data.set('todo.status', target.dataset.index)
             }
         },
@@ -79,6 +80,7 @@
 
 <style lang="scss">
     @import '../static/scss/style.scss';
+
     [class$="-edit"] {
         border-bottom: 1px solid $deepgray;
         [class$="-opt"] {

@@ -19,7 +19,7 @@ store.addAction('addTodo', function (todo) {
 store.addAction('modifyTodo', function (obj) {
     let todo = obj.todo
     let index = obj.index
-    if(todo.prior && todo.status && todo.content) {
+    if (todo.prior && todo.status && todo.content) {
         let todos = store.getState('todos')
         todos.splice(index, 1, todo)
         window.localStorage.todos = JSON.stringify(todos)
@@ -35,7 +35,7 @@ store.addAction('deleteTodo', function (index) {
     return updateBuilder().splice('todos', index, 1)
 })
 
-store.addAction('modifyStatus', function(obj) {
+store.addAction('modifyStatus', function (obj) {
     let todos = store.getState('todos')
     console.log(obj.index)
     todos[obj.index].status = obj.status

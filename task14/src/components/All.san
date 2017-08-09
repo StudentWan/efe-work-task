@@ -4,40 +4,43 @@
             <ul class="select-prior">
                 <li class="prior-opt" tag="0">
                     <i class="fa fa-circle high" aria-hidden="true"></i>
-                    <span class="sign">高优</span> 
+                    <span class="sign">高优</span>
                 </li>
                 <li class="prior-opt" tag="1">
                     <i class="fa fa-circle medium" aria-hidden="true"></i>
-                    <span class="sign">中优</span> 
+                    <span class="sign">中优</span>
                 </li>
                 <li class="prior-opt" tag="2">
                     <i class="fa fa-circle low" aria-hidden="true"></i>
-                    <span class="sign">低优</span> 
+                    <span class="sign">低优</span>
                 </li>
             </ul>
             <ul class="select-status">
                 <li class="status-opt" tag="0">
                     <i class="fa fa-play" aria-hidden="true"></i>
-                    <span class="sign">进行中</span> 
+                    <span class="sign">进行中</span>
                 </li>
                 <li class="status-opt" tag="1">
                     <i class="fa fa-pause" aria-hidden="true"></i>
-                    <span class="sign">待办</span> 
+                    <span class="sign">待办</span>
                 </li>
                 <li class="status-opt" tag="2">
                     <i class="fa fa-stop" aria-hidden="true"></i>
-                    <span class="sign">已完成</span> 
+                    <span class="sign">已完成</span>
                 </li>
             </ul>
         </div>
         <div class="list" on-touchstart="startTouch($event)" on-touchend="endTouch($event)">
-                <div class="item" s-for="item, index in filterTodos" data-index="{{index}}">
-                    <i class="fa{{item.status === '0' ? ' fa-play' : ''}}{{item.status === '1' ? ' fa-pause': ''}}{{item.status === '2'? ' fa-stop' : ''}}
-                                {{item.prior === '0' ? ' high' : ''}}{{item.prior === '1' ? 'medium' : ''}}{{item.prior === '2' ? ' low' : ''}}" aria-hidden="true"  ></i>
-                    <div class="content">{{item.content}}</div>
-                    <left-choose s-if="checkChoose[index].isLeftOn" on-enablepan="enablePan(index)" index="{{index}}"></left-choose>
-                    <right-choose s-if="checkChoose[index].isRightOn" on-enablepan="enablePan(index)" index="{{index}}"></right-choose>
-                </div>
+            <div class="item" s-for="item, index in filterTodos" data-index="{{index}}">
+                <i class="fa{{item.status === '0' ? ' fa-play' : ''}}{{item.status === '1' ? ' fa-pause': ''}}{{item.status === '2'? ' fa-stop' : ''}}
+                                {{item.prior === '0' ? ' high' : ''}}{{item.prior === '1' ? 'medium' : ''}}{{item.prior === '2' ? ' low' : ''}}"
+                   aria-hidden="true"></i>
+                <div class="content">{{item.content}}</div>
+                <left-choose s-if="checkChoose[index].isLeftOn" on-enablepan="enablePan(index)"
+                             index="{{index}}"></left-choose>
+                <right-choose s-if="checkChoose[index].isRightOn" on-enablepan="enablePan(index)"
+                              index="{{index}}"></right-choose>
+            </div>
         </div>
     </div>
 </template>
@@ -47,7 +50,8 @@
     import {connect} from 'san-store'
     import LeftChoose from './partial/Leftchoose.san'
     import RightChoose from './partial/Rightchoose.san'
-    export default connect.san({todos: 'todos'}, {}) ({
+
+    export default connect.san({todos: 'todos'}, {})({
         initData: function () {
             return {
                 items: [1, 2],
@@ -67,13 +71,13 @@
         },
         attached: function () {
             let lens = this.data.get('todos').length
-            while(lens > 0) {
+            while (lens > 0) {
                 this.data.push('checkChoose', {isLeftOn: false, isRightOn: false})
-                lens--;
+                lens--
             }
         },
         updated: function () {
-            if(this.data.get('filterTodos').length < this.data.get('todos').length) {
+            if (this.data.get('filterTodos').length < this.data.get('todos').length) {
                 this.data.set('isTouchMoved', true)
             } else {
                 this.data.set('isTouchMoved', false)
@@ -85,26 +89,26 @@
             'right-choose': RightChoose
         },
         startTouch: function (e) {
-                if(!this.data.get('isTouchMoved')) {
-                    let target
-                    if (e.target.className === 'item') {
-                        target = e.target
-                    } else if(e.target.parentNode.className === 'item') {
-                        target = e.target.parentNode
-                    }
-                    this.data.set('startX', e.touches[0].pageX)
-                    this.data.set('selectedIndex', target.dataset.index)
+            if (!this.data.get('isTouchMoved')) {
+                let target
+                if (e.target.className === 'item') {
+                    target = e.target
+                } else if (e.target.parentNode.className === 'item') {
+                    target = e.target.parentNode
                 }
+                this.data.set('startX', e.touches[0].pageX)
+                this.data.set('selectedIndex', target.dataset.index)
+            }
         },
         endTouch: function (e) {
-            if(!this.data.get('isTouchMoved')) {
+            if (!this.data.get('isTouchMoved')) {
                 let endX = e.changedTouches[0].pageX
                 let startX = this.data.get('startX')
                 let index = this.data.get('selectedIndex')
-                if(startX - endX > 0 ) {
-                    this.data.set(`checkChoose[${index}].isRightOn` , true)
+                if (startX - endX > 0) {
+                    this.data.set(`checkChoose[${index}].isRightOn`, true)
                 } else {
-                    this.data.set(`checkChoose[${index}].isLeftOn` , true)
+                    this.data.set(`checkChoose[${index}].isLeftOn`, true)
                 }
                 this.data.set('isTouchMoved', true)
                 this.fire('chooseon')
@@ -112,8 +116,8 @@
         },
         enablePan: function (index) {
             this.data.set('isTouchMoved', false)
-            this.data.set(`checkChoose[${index}].isRightOn` , false)
-            this.data.set(`checkChoose[${index}].isLeftOn` , false)
+            this.data.set(`checkChoose[${index}].isRightOn`, false)
+            this.data.set(`checkChoose[${index}].isLeftOn`, false)
             this.fire('chooseoff')
         },
         chooseDisplay: function (e) {
@@ -146,7 +150,7 @@
         computed: {
             filterTodos: function () {
                 let todos = this.data.get('todos')
-                if(todos) {
+                if (todos) {
                     return todos.filter((todo) => {
                         let prior = todo.prior
                         let status = todo.status

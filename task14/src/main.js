@@ -16,19 +16,25 @@ const app = new App()
 app.attach(document.body)
 
 // router
-router.add({rule: '/', handler(e) {
-    app.data.set('path', 0)
-}})
-router.add({rule: '/all', handler(e) {
-    app.data.set('path', 1)
-}})
-router.add({rule: '/edit/:id', handler(e) {
-    app.data.set('path', 2)
-    app.data.set('isChooseOn', false)
-    if(e.path === '/edit/change') {
-        app.data.set('index', e.query.index)
+router.add({
+    rule: '/', handler(e) {
+        app.data.set('path', 0)
     }
-}})
+})
+router.add({
+    rule: '/all', handler(e) {
+        app.data.set('path', 1)
+    }
+})
+router.add({
+    rule: '/edit/:id', handler(e) {
+        app.data.set('path', 2)
+        app.data.set('isChooseOn', false)
+        if (e.path === '/edit/change') {
+            app.data.set('index', e.query.index)
+        }
+    }
+})
 router.start()
 
 

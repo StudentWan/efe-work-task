@@ -11,13 +11,14 @@
 <script>
     import {Link} from 'san-router'
     import {connect} from 'san-store'
-    export default connect.san({todos: 'todos'}) ({
+
+    export default connect.san({todos: 'todos'})({
         components: {
             'router-link': Link
         },
         attached: function () {
             for (let item of this.data.get('todos')) {
-                if(item.prior === '0' && item.status === '0') {
+                if (item.prior === '0' && item.status === '0') {
                     this.data.set('item', item)
                     break
                 }
