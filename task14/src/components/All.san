@@ -72,6 +72,13 @@
                 lens--;
             }
         },
+        updated: function () {
+            if(this.data.get('filterTodos').length < this.data.get('todos').length) {
+                this.data.set('isTouchMoved', true)
+            } else {
+                this.data.set('isTouchMoved', false)
+            }
+        },
         components: {
             'router-link': Link,
             'left-choose': LeftChoose,
